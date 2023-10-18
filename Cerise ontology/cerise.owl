@@ -1,0 +1,2692 @@
+@prefix : <http://ontology.tno.nl/cerise/cim-profile#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix cim: <http://ontology.tno.nl/cerise/cim-profile#> .
+@prefix msg: <http://langdale.com.au/2005/Message#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix uml: <http://langdale.com.au/2005/UML#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@base <http://ontology.tno.nl/cerise/cim-profile> .
+
+<http://ontology.tno.nl/cerise/cim-profile> rdf:type owl:Ontology ;
+                                             dcterms:created "15-07-2015"^^xsd:string ;
+                                             dcterms:creator "Roel Stap (roel.stap@alliander.com ), Laura Daniele (laura.daniele@tno.nl)"^^xsd:string ;
+                                             dcterms:description "This ontology is an OWL profile of the IEC Common Information Model for Smart Grids, developed by the Cerise-SG project. This profile extends the cim-smartgrid profile previously created by Maarten Steen (available at http://ns.cerise-project.nl/energy/def/cim-smartgrid) with the classes Register and Channel. This OWL profile was generated from the UML version of the IEC Common Information Model using the CIMTool."^^xsd:string ;
+                                             dcterms:issued "15-07-2015"^^xsd:string ;
+                                             dcterms:publisher <http://www.cerise-project.nl/> ;
+                                             dcterms:title "The cerise cim profile ontology: A CIM Profile for Smart Grids"^^xsd:string ;
+                                             rdfs:comment """Laura Daniele [17-07-2015]: This is a draft version for internal use in the CERISE project. We encountered some issues with the generation this OWL profile with the CIMTool that still need to be solved. One issue is that the mapping of cardinalities in the transformation from UML to OWL is not always correct. For example:
+•	the UML association Meter [0..1] was mapped by the CIMTool into the OWL property MeterReading.Meter exactly 1, while we would expect it to be mapped to MeterReading.Meter max 1
+•	the UML association Readings [0..*] was mapped by the CIMTool into the OWL property MeterReading.Readings min 1, while while we would expect it to be mapped to MeterReading.Readings min 0
+To overcome the issue we are changing manually the incorrect cardinalities in the generated OWL profile, but there are many properties and this requires quite some time and effort, so some cardinalities can still be not compliant with the original UML model. 
+
+Roel Stap[12-06-2015]: For gas metering the class SimpleEndDeviceFunction is defined, specialisation of EndDeviceFunction. Within this class there is a mandatory attribute defined \\\"kind\\\" of type EndDeviceFunctionKind. This last class is an enumeration of different type of metering. This class can be used can be used to distinguish between different tupe of metering, for example electric and gas metering. This means this class is mandatory, for each type of metering the type shall be defined."""^^xsd:string ;
+                                             rdfs:label "A CIM Profile for Smart Grids"^^xsd:string ;
+                                             owl:versionInfo "0.1 (first draft- only for internal use in the CERISE project)"^^xsd:string .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://langdale.com.au/2005/UML#hasStereotype
+uml:hasStereotype rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/created
+dcterms:created rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/creator
+dcterms:creator rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/description
+dcterms:description rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/issued
+dcterms:issued rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/publisher
+dcterms:publisher rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/title
+dcterms:title rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://ontology.tno.nl/cerise/cim-profile#BaseReading.timePeriod
+cim:BaseReading.timePeriod rdf:type owl:ObjectProperty ;
+                           uml:hasStereotype uml:attribute ,
+                                             uml:byreference ;
+                           rdfs:comment "Start and end of the period for those readings whose type has a time attribute such as 'billing', seasonal' or 'forTheSpecifiedPeriod'." ;
+                           rdfs:label "timePeriod" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#Channel.ReadingType
+cim:Channel.ReadingType rdf:type owl:ObjectProperty ;
+                        rdfs:comment "Reading type for register values reported/collected by this channel." ;
+                        rdfs:label "ReadingType" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#Channel.Register
+cim:Channel.Register rdf:type owl:ObjectProperty ;
+                     owl:inverseOf cim:Register.Channels ;
+                     rdfs:comment "Register whose values are collected/reported by this channel." ;
+                     rdfs:label "Register" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#CoordinateSystem.Location
+cim:CoordinateSystem.Location rdf:type owl:ObjectProperty ;
+                              owl:inverseOf cim:Location.CoordinateSystem ;
+                              rdfs:comment "All locations described with position points in this coordinate system." ;
+                              rdfs:label "Location" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#Customer.kind
+cim:Customer.kind rdf:type owl:ObjectProperty ;
+                  uml:hasStereotype uml:attribute ;
+                  rdfs:comment "Kind of customer." ;
+                  rdfs:label "kind" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#CustomerAgreement.Customer
+cim:CustomerAgreement.Customer rdf:type owl:ObjectProperty ;
+                               rdfs:comment "Customer for this agreement." ;
+                               rdfs:label "Customer" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#CustomerAgreement.ServiceCategory
+cim:CustomerAgreement.ServiceCategory rdf:type owl:ObjectProperty ;
+                                      rdfs:comment "Service category for this agreement." ;
+                                      rdfs:label "ServiceCategory" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#CustomerAgreement.ServiceSupplier
+cim:CustomerAgreement.ServiceSupplier rdf:type owl:ObjectProperty ;
+                                      rdfs:comment "Service supplier for this customer agreement." ;
+                                      rdfs:label "ServiceSupplier" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#EndDevice.EndDeviceFunctions
+cim:EndDevice.EndDeviceFunctions rdf:type owl:ObjectProperty ;
+                                 owl:inverseOf cim:EndDeviceFunction.EndDevice ;
+                                 rdfs:comment "All end device functions this end device performs." ;
+                                 rdfs:label "EndDeviceFunctions" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#EndDevice.UsagePoint
+cim:EndDevice.UsagePoint rdf:type owl:ObjectProperty ;
+                         rdfs:comment "Usage point to which this end device belongs." ;
+                         rdfs:label "UsagePoint" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#EndDeviceFunction.EndDevice
+cim:EndDeviceFunction.EndDevice rdf:type owl:ObjectProperty ;
+                                rdfs:comment "End device that performs this function." ;
+                                rdfs:label "EndDevice" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#IntervalBlock.IntervalReadings
+cim:IntervalBlock.IntervalReadings rdf:type owl:ObjectProperty ;
+                                   owl:inverseOf cim:IntervalReading.IntervalBlocks ;
+                                   rdfs:comment "Interval reading contained in this block." ;
+                                   rdfs:label "IntervalReadings" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#IntervalBlock.MeterReading
+cim:IntervalBlock.MeterReading rdf:type owl:ObjectProperty ;
+                               rdfs:comment "Meter reading containing this interval block." ;
+                               rdfs:label "MeterReading" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#IntervalBlock.ReadingType
+cim:IntervalBlock.ReadingType rdf:type owl:ObjectProperty ;
+                              rdfs:comment "Type information for interval reading values contained in this block." ;
+                              rdfs:label "ReadingType" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#IntervalReading.IntervalBlocks
+cim:IntervalReading.IntervalBlocks rdf:type owl:ObjectProperty ;
+                                   rdfs:comment "All blocks containing this interval reading." ;
+                                   rdfs:label "IntervalBlocks" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#Location.CoordinateSystem
+cim:Location.CoordinateSystem rdf:type owl:ObjectProperty ;
+                              rdfs:comment "Coordinate system used to describe position points of this location." ;
+                              rdfs:label "CoordinateSystem" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#Location.PositionPoints
+cim:Location.PositionPoints rdf:type owl:ObjectProperty ;
+                            owl:inverseOf cim:PositionPoint.Location ;
+                            rdfs:comment "Sequence of position points describing this location, expressed in coordinate system 'Location.CoordinateSystem'." ;
+                            rdfs:label "PositionPoints" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#Location.electronicAddress
+cim:Location.electronicAddress rdf:type owl:ObjectProperty ;
+                               uml:hasStereotype uml:attribute ;
+                               rdfs:comment "Electronic address." ;
+                               rdfs:label "electronicAddress" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#Location.mainAddress
+cim:Location.mainAddress rdf:type owl:ObjectProperty ;
+                         uml:hasStereotype uml:attribute ;
+                         rdfs:comment "Main address of the location." ;
+                         rdfs:label "mainAddress" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#Location.phone1
+cim:Location.phone1 rdf:type owl:ObjectProperty ;
+                    uml:hasStereotype uml:attribute ;
+                    rdfs:comment "Phone number." ;
+                    rdfs:label "phone1" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#Location.phone2
+cim:Location.phone2 rdf:type owl:ObjectProperty ;
+                    uml:hasStereotype uml:attribute ;
+                    rdfs:comment "Additional phone number." ;
+                    rdfs:label "phone2" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#Location.secondaryAddress
+cim:Location.secondaryAddress rdf:type owl:ObjectProperty ;
+                              uml:hasStereotype uml:attribute ;
+                              rdfs:comment "Secondary address of the location. For example, PO Box address may have different ZIP code than that in the 'mainAddress'." ;
+                              rdfs:label "secondaryAddress" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#Location.status
+cim:Location.status rdf:type owl:ObjectProperty ;
+                    uml:hasStereotype uml:attribute ;
+                    rdfs:comment "Status of this location." ;
+                    rdfs:label "status" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#Meter.MeterMultipliers
+cim:Meter.MeterMultipliers rdf:type owl:ObjectProperty ;
+                           owl:inverseOf cim:MeterMultiplier.Meter ;
+                           rdfs:comment "All multipliers applied at this meter." ;
+                           rdfs:label "MeterMultipliers" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#Meter.MeterReadings
+cim:Meter.MeterReadings rdf:type owl:ObjectProperty ;
+                        owl:inverseOf cim:MeterReading.Meter ;
+                        rdfs:comment "All meter readings provided by this meter." ;
+                        rdfs:label "MeterReadings" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#MeterMultiplier.Meter
+cim:MeterMultiplier.Meter rdf:type owl:ObjectProperty ;
+                          rdfs:comment "Meter applying this multiplier." ;
+                          rdfs:label "Meter" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#MeterMultiplier.kind
+cim:MeterMultiplier.kind rdf:type owl:ObjectProperty ;
+                         uml:hasStereotype uml:attribute ;
+                         rdfs:comment "Kind of multiplier." ;
+                         rdfs:label "kind" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#MeterReading.CustomerAgreement
+cim:MeterReading.CustomerAgreement rdf:type owl:ObjectProperty ;
+                                   rdfs:comment "(could be deprecated in the future) Customer agreement for this meter reading." ;
+                                   rdfs:label "CustomerAgreement" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#MeterReading.Meter
+cim:MeterReading.Meter rdf:type owl:ObjectProperty ;
+                       rdfs:comment "Meter providing this reading." ;
+                       rdfs:label "Meter" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#MeterReading.Readings
+cim:MeterReading.Readings rdf:type owl:ObjectProperty ;
+                          owl:inverseOf cim:Reading.MeterReadings ;
+                          rdfs:comment "All reading values contained within this meter reading." ;
+                          rdfs:label "Readings" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#MeterReading.UsagePoint
+cim:MeterReading.UsagePoint rdf:type owl:ObjectProperty ;
+                            owl:inverseOf cim:UsagePoint.MeterReadings ;
+                            rdfs:comment "Usage point from which this meter reading (set of values) has been obtained." ;
+                            rdfs:label "UsagePoint" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#MeterReading.valuesInterval
+cim:MeterReading.valuesInterval rdf:type owl:ObjectProperty ;
+                                uml:hasStereotype uml:attribute ;
+                                rdfs:comment "Date and time interval of the data items contained within this meter reading." ;
+                                rdfs:label "valuesInterval" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#PositionPoint.Location
+cim:PositionPoint.Location rdf:type owl:ObjectProperty ;
+                           rdfs:comment "Location described by this position point." ;
+                           rdfs:label "Location" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#Reading.MeterReadings
+cim:Reading.MeterReadings rdf:type owl:ObjectProperty ;
+                          rdfs:comment "All meter readings (sets of values) containing this reading value." ;
+                          rdfs:label "MeterReadings" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#Reading.ReadingType
+cim:Reading.ReadingType rdf:type owl:ObjectProperty ;
+                        rdfs:comment "Type information for this reading value." ;
+                        rdfs:label "ReadingType" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#Reading.reason
+cim:Reading.reason rdf:type owl:ObjectProperty ;
+                   uml:hasStereotype uml:attribute ;
+                   rdfs:comment "Reason for this reading being taken." ;
+                   rdfs:label "reason" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#Register.Channels
+cim:Register.Channels rdf:type owl:ObjectProperty ;
+                      rdfs:comment "All channels that collect/report values from this register." ;
+                      rdfs:label "Channels" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#ServiceCategory.kind
+cim:ServiceCategory.kind rdf:type owl:ObjectProperty ;
+                         uml:hasStereotype uml:attribute ;
+                         rdfs:comment "Kind of service." ;
+                         rdfs:label "kind" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#ServiceSupplier.kind
+cim:ServiceSupplier.kind rdf:type owl:ObjectProperty ;
+                         uml:hasStereotype uml:attribute ;
+                         rdfs:comment "Kind of supplier." ;
+                         rdfs:label "kind" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#SimpleEndDeviceFunction.kind
+cim:SimpleEndDeviceFunction.kind rdf:type owl:ObjectProperty ;
+                                 uml:hasStereotype uml:attribute ;
+                                 rdfs:comment "Kind of this function." ;
+                                 rdfs:label "kind" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#StreetAddress.streetDetail
+cim:StreetAddress.streetDetail rdf:type owl:ObjectProperty ;
+                               uml:hasStereotype uml:attribute ;
+                               rdfs:comment "Street detail." ;
+                               rdfs:label "streetDetail" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#StreetAddress.townDetail
+cim:StreetAddress.townDetail rdf:type owl:ObjectProperty ;
+                             uml:hasStereotype uml:attribute ;
+                             rdfs:comment "Town detail." ;
+                             rdfs:label "townDetail" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#UsagePoint.CustomerAgreement
+cim:UsagePoint.CustomerAgreement rdf:type owl:ObjectProperty ;
+                                 rdfs:comment "Customer agreement regulating this service delivery point." ;
+                                 rdfs:label "CustomerAgreement" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#UsagePoint.MeterReadings
+cim:UsagePoint.MeterReadings rdf:type owl:ObjectProperty ;
+                             rdfs:comment "All meter readings obtained from this usage point." ;
+                             rdfs:label "MeterReadings" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#UsagePoint.ServiceCategory
+cim:UsagePoint.ServiceCategory rdf:type owl:ObjectProperty ;
+                               rdfs:comment "Service category delivered by this usage point." ;
+                               rdfs:label "ServiceCategory" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#UsagePoint.ServiceSupplier
+cim:UsagePoint.ServiceSupplier rdf:type owl:ObjectProperty ;
+                               rdfs:comment "ServiceSupplier (Utility) utilising this usage point to deliver a service." ;
+                               rdfs:label "ServiceSupplier" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#UsagePoint.UsagePointLocation
+cim:UsagePoint.UsagePointLocation rdf:type owl:ObjectProperty ;
+                                  owl:inverseOf cim:UsagePointLocation.UsagePoints ;
+                                  rdfs:comment "Location of this usage point." ;
+                                  rdfs:label "UsagePointLocation" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#UsagePoint.amiBillingReady
+cim:UsagePoint.amiBillingReady rdf:type owl:ObjectProperty ;
+                               uml:hasStereotype uml:attribute ;
+                               rdfs:comment "Tracks the lifecycle of the metering installation at a usage point with respect to readiness for billing via advanced metering infrastructure reads." ;
+                               rdfs:label "amiBillingReady" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#UsagePointLocation.UsagePoints
+cim:UsagePointLocation.UsagePoints rdf:type owl:ObjectProperty ;
+                                   rdfs:comment "All usage points at this location." ;
+                                   rdfs:label "UsagePoints" .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://ontology.tno.nl/cerise/cim-profile#BaseReading.source
+cim:BaseReading.source rdf:type owl:DatatypeProperty ;
+                       uml:hasStereotype uml:attribute ;
+                       rdfs:comment "System that originally supplied the reading (e.g., customer, AMI system, handheld reading system, another enterprise system, etc.)." ;
+                       rdfs:label "source" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#BaseReading.value
+cim:BaseReading.value rdf:type owl:DatatypeProperty ;
+                      uml:hasStereotype uml:attribute ;
+                      rdfs:comment "Value of this reading." ;
+                      rdfs:label "value" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#Channel.isVirtual
+cim:Channel.isVirtual rdf:type owl:DatatypeProperty ;
+                      uml:hasStereotype uml:attribute ;
+                      rdfs:comment "If true, the data is being calculated by an enterprise system rather than metered directly." ;
+                      rdfs:label "isVirtual" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#CoordinateSystem.crsUrn
+cim:CoordinateSystem.crsUrn rdf:type owl:DatatypeProperty ;
+                            uml:hasStereotype uml:attribute ;
+                            rdfs:comment """A Uniform Resource Name (URN) for the coordinate reference system (crs) used to define 'Location.PositionPoints'.
+An example would be the European Petroleum Survey Group (EPSG) code for a coordinate reference system, defined in URN under the Open Geospatial Consortium (OGC) namespace as: urn:ogc :def:uom:EPSG::XXXX, where XXXX is an EPSG code (a full list of codes can be found at the EPSG Registry website http://www.epsg-registry.org/). To define the coordinate system as being WGS84 (latitude, longitude) using an EPSG OGC, this attribute would be urn:ogc:def:uom:EPSG::4236.
+A profile should limit this code to a set of allowed URNs agreed to by all sending and receiving parties.""" ;
+                            rdfs:label "crsUrn" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#DateTimeInterval.end
+cim:DateTimeInterval.end rdf:type owl:DatatypeProperty ;
+                         uml:hasStereotype uml:attribute ;
+                         rdfs:comment "End date and time of this interval." ;
+                         rdfs:label "end" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#DateTimeInterval.start
+cim:DateTimeInterval.start rdf:type owl:DatatypeProperty ;
+                           uml:hasStereotype uml:attribute ;
+                           rdfs:comment "Start date and time of this interval." ;
+                           rdfs:label "start" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#ElectronicAddress.email1
+cim:ElectronicAddress.email1 rdf:type owl:DatatypeProperty ;
+                             uml:hasStereotype uml:attribute ;
+                             rdfs:comment "Primary email address." ;
+                             rdfs:label "email1" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#ElectronicAddress.email2
+cim:ElectronicAddress.email2 rdf:type owl:DatatypeProperty ;
+                             uml:hasStereotype uml:attribute ;
+                             rdfs:comment "Alternate email address." ;
+                             rdfs:label "email2" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#ElectronicAddress.lan
+cim:ElectronicAddress.lan rdf:type owl:DatatypeProperty ;
+                          uml:hasStereotype uml:attribute ;
+                          rdfs:comment "Address on local area network." ;
+                          rdfs:label "lan" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#ElectronicAddress.mac
+cim:ElectronicAddress.mac rdf:type owl:DatatypeProperty ;
+                          uml:hasStereotype uml:attribute ;
+                          rdfs:comment "MAC (Media Access Control) address." ;
+                          rdfs:label "mac" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#ElectronicAddress.password
+cim:ElectronicAddress.password rdf:type owl:DatatypeProperty ;
+                               uml:hasStereotype uml:attribute ;
+                               rdfs:comment "Password needed to log in." ;
+                               rdfs:label "password" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#ElectronicAddress.radio
+cim:ElectronicAddress.radio rdf:type owl:DatatypeProperty ;
+                            uml:hasStereotype uml:attribute ;
+                            rdfs:comment "Radio address." ;
+                            rdfs:label "radio" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#ElectronicAddress.userID
+cim:ElectronicAddress.userID rdf:type owl:DatatypeProperty ;
+                             uml:hasStereotype uml:attribute ;
+                             rdfs:comment "User ID needed to log in, which can be for an individual person, an organisation, a location, etc." ;
+                             rdfs:label "userID" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#ElectronicAddress.web
+cim:ElectronicAddress.web rdf:type owl:DatatypeProperty ;
+                          uml:hasStereotype uml:attribute ;
+                          rdfs:comment "World wide web address." ;
+                          rdfs:label "web" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#EndDevice.installCode
+cim:EndDevice.installCode rdf:type owl:DatatypeProperty ;
+                          uml:hasStereotype uml:attribute ;
+                          rdfs:comment "Installation code." ;
+                          rdfs:label "installCode" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#EndDevice.isVirtual
+cim:EndDevice.isVirtual rdf:type owl:DatatypeProperty ;
+                        uml:hasStereotype uml:attribute ;
+                        rdfs:comment "If true, there is no physical device. As an example, a virtual meter can be defined to aggregate the consumption for two or more physical meters. Otherwise, this is a physical hardware device." ;
+                        rdfs:label "isVirtual" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#IdentifiedObject.aliasName
+cim:IdentifiedObject.aliasName rdf:type owl:DatatypeProperty ;
+                               uml:hasStereotype uml:attribute ;
+                               rdfs:comment """The aliasName is free text human readable name of the object alternative to IdentifiedObject.name. It may be non unique and may not correlate to a naming hierarchy.
+The attribute aliasName is retained because of backwards compatibility between CIM relases. It is however recommended to replace aliasName with the Name class as aliasName is planned for retirement at a future time.""" ;
+                               rdfs:label "aliasName" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#IdentifiedObject.mRID
+cim:IdentifiedObject.mRID rdf:type owl:DatatypeProperty ;
+                          uml:hasStereotype uml:attribute ;
+                          rdfs:comment """Master resource identifier issued by a model authority. The mRID is globally unique within an exchange context.
+Global uniqeness is easily achived by using a UUID for the mRID. It is strongly recommended to do this.
+For CIMXML data files in RDF syntax, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.""" ;
+                          rdfs:label "mRID" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#IdentifiedObject.name
+cim:IdentifiedObject.name rdf:type owl:DatatypeProperty ;
+                          uml:hasStereotype uml:attribute ;
+                          rdfs:comment "The name is any free human readable and possibly non unique text naming the object." ;
+                          rdfs:label "name" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#Location.geoInfoReference
+cim:Location.geoInfoReference rdf:type owl:DatatypeProperty ;
+                              uml:hasStereotype uml:attribute ;
+                              rdfs:comment "(if applicable) Reference to geographical information source, often external to the utility." ;
+                              rdfs:label "geoInfoReference" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#Location.type
+cim:Location.type rdf:type owl:DatatypeProperty ;
+                  uml:hasStereotype uml:attribute ;
+                  rdfs:comment "Classification by utility's corporate standards and practices, relative to the location itself (e.g., geographical, functional accounting, etc., not a given property that happens to exist at that location)." ;
+                  rdfs:label "type" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#Meter.formNumber
+cim:Meter.formNumber rdf:type owl:DatatypeProperty ;
+                     uml:hasStereotype uml:attribute ;
+                     rdfs:comment "Meter form designation per ANSI C12.10 or other applicable standard. An alphanumeric designation denoting the circuit arrangement for which the meter is applicable and its specific terminal arrangement." ;
+                     rdfs:label "formNumber" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#MeterMultiplier.value
+cim:MeterMultiplier.value rdf:type owl:DatatypeProperty ;
+                          uml:hasStereotype uml:attribute ;
+                          rdfs:comment "Multiplier value." ;
+                          rdfs:label "value" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#PositionPoint.sequenceNumber
+cim:PositionPoint.sequenceNumber rdf:type owl:DatatypeProperty ;
+                                 uml:hasStereotype uml:attribute ;
+                                 rdfs:comment "Zero-relative sequence number of this point within a series of points." ;
+                                 rdfs:label "sequenceNumber" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#PositionPoint.xPosition
+cim:PositionPoint.xPosition rdf:type owl:DatatypeProperty ;
+                            uml:hasStereotype uml:attribute ;
+                            rdfs:comment "X axis position." ;
+                            rdfs:label "xPosition" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#PositionPoint.yPosition
+cim:PositionPoint.yPosition rdf:type owl:DatatypeProperty ;
+                            uml:hasStereotype uml:attribute ;
+                            rdfs:comment "Y axis position." ;
+                            rdfs:label "yPosition" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#PositionPoint.zPosition
+cim:PositionPoint.zPosition rdf:type owl:DatatypeProperty ;
+                            uml:hasStereotype uml:attribute ;
+                            rdfs:comment "(if applicable) Z axis position." ;
+                            rdfs:label "zPosition" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#ReadingType.accumulation
+cim:ReadingType.accumulation rdf:type owl:DatatypeProperty ;
+                             uml:hasStereotype uml:attribute ;
+                             rdfs:comment "Accumulation behaviour of a reading over time, usually 'measuringPeriod', to be used with individual endpoints (as opposed to 'macroPeriod' and 'aggregate' that are used to describe aggregations of data from individual endpoints)." ;
+                             rdfs:label "accumulation" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#ReadingType.aggregate
+cim:ReadingType.aggregate rdf:type owl:DatatypeProperty ;
+                          uml:hasStereotype uml:attribute ;
+                          rdfs:comment "Salient attribute of the reading data aggregated from individual endpoints. This is mainly used to define a mathematical operation carried out over 'macroPeriod', but may also be used to describe an attribute of the data when the 'macroPeriod' is not defined." ;
+                          rdfs:label "aggregate" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#ReadingType.commodity
+cim:ReadingType.commodity rdf:type owl:DatatypeProperty ;
+                          uml:hasStereotype uml:attribute ;
+                          rdfs:comment "Commodity being measured." ;
+                          rdfs:label "commodity" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#ReadingType.flowDirection
+cim:ReadingType.flowDirection rdf:type owl:DatatypeProperty ;
+                              uml:hasStereotype uml:attribute ;
+                              rdfs:comment "Flow direction for a reading where the direction of flow of the commodity is important (for electricity measurements this includes current, energy, power, and demand)." ;
+                              rdfs:label "flowDirection" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#ReadingType.measurementKind
+cim:ReadingType.measurementKind rdf:type owl:DatatypeProperty ;
+                                uml:hasStereotype uml:attribute ;
+                                rdfs:comment "Identifies \"what\" is being measured, as refinement of 'commodity'. When combined with 'unit', it provides detail to the unit of measure. For example, 'energy' with a unit of measure of 'kWh' indicates to the user that active energy is being measured, while with 'kVAh' or 'kVArh', it indicates apparent energy and reactive energy, respectively. 'power' can be combined in a similar way with various power units of measure: Distortion power ('distortionVoltAmperes') with 'kVA' is different from 'power' with 'kVA'." ;
+                                rdfs:label "measurementKind" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#ReadingType.measuringPeriod
+cim:ReadingType.measuringPeriod rdf:type owl:DatatypeProperty ;
+                                uml:hasStereotype uml:attribute ;
+                                rdfs:comment """Time attribute inherent or fundamental to the reading value (as opposed to 'macroPeriod' that supplies an \"adjective\" to describe aspects of a time period with regard to the measurement). It refers to the way the value was originally measured and not to the frequency at which it is reported or presented. For example, an hourly interval of consumption data would have value 'hourly' as an attribute. However in the case of an hourly sampled voltage value, the meterReadings schema would carry the 'hourly' interval size information.
+It is common for meters to report demand in a form that is measured over the course of a portion of an hour, while enterprise applications however commonly assume the demand (in kW or kVAr) normalised to 1 hour. The sytem that receives readings directly from the meter therefore must perform this transformation before publishing readings for use by the other enterprise systems. The scalar used is chosen based on the block size (not any sub-interval size).""" ;
+                                rdfs:label "measuringPeriod" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#ReadingType.unit
+cim:ReadingType.unit rdf:type owl:DatatypeProperty ;
+                     uml:hasStereotype uml:attribute ;
+                     rdfs:comment "Metering-specific unit." ;
+                     rdfs:label "unit" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#Register.isVirtual
+cim:Register.isVirtual rdf:type owl:DatatypeProperty ;
+                       uml:hasStereotype uml:attribute ;
+                       rdfs:comment "If true, the data it produces is  calculated or measured by a device other than a physical end device/meter. Otherwise, any data streams it produces are measured by the hardware of the end device/meter itself." ;
+                       rdfs:label "isVirtual" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#Register.leftDigitCount
+cim:Register.leftDigitCount rdf:type owl:DatatypeProperty ;
+                            uml:hasStereotype uml:attribute ;
+                            rdfs:comment "Number of digits (dials on a mechanical meter) to the left of the decimal place; default is normally 5." ;
+                            rdfs:label "leftDigitCount" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#Register.rightDigitCount
+cim:Register.rightDigitCount rdf:type owl:DatatypeProperty ;
+                             uml:hasStereotype uml:attribute ;
+                             rdfs:comment "Number of digits (dials on a mechanical meter) to the right of the decimal place." ;
+                             rdfs:label "rightDigitCount" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#ServiceSupplier.issuerIdentificationNumber
+cim:ServiceSupplier.issuerIdentificationNumber rdf:type owl:DatatypeProperty ;
+                                               uml:hasStereotype uml:attribute ;
+                                               rdfs:comment "Unique transaction reference prefix number issued to an entity by the International Standards Organisation for the purpose of tagging onto electronic financial transactions, as defined in ISO/IEC 7812-1 and ISO/IEC 7812-2." ;
+                                               rdfs:label "issuerIdentificationNumber" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#Status.dateTime
+cim:Status.dateTime rdf:type owl:DatatypeProperty ;
+                    uml:hasStereotype uml:attribute ;
+                    rdfs:comment "Date and time for which status 'value' applies." ;
+                    rdfs:label "dateTime" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#Status.reason
+cim:Status.reason rdf:type owl:DatatypeProperty ;
+                  uml:hasStereotype uml:attribute ;
+                  rdfs:comment "Reason code or explanation for why an object went to the current status 'value'." ;
+                  rdfs:label "reason" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#Status.remark
+cim:Status.remark rdf:type owl:DatatypeProperty ;
+                  uml:hasStereotype uml:attribute ;
+                  rdfs:comment "Pertinent information regarding the current 'value', as free form text." ;
+                  rdfs:label "remark" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#Status.value
+cim:Status.value rdf:type owl:DatatypeProperty ;
+                 uml:hasStereotype uml:attribute ;
+                 rdfs:comment "Status value at 'dateTime'; prior status changes may have been kept in instances of activity records associated with the object to which this status applies." ;
+                 rdfs:label "value" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#StreetDetail.addressGeneral
+cim:StreetDetail.addressGeneral rdf:type owl:DatatypeProperty ;
+                                uml:hasStereotype uml:attribute ;
+                                rdfs:comment "Additional address information, for example a mailstop." ;
+                                rdfs:label "addressGeneral" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#StreetDetail.buildingName
+cim:StreetDetail.buildingName rdf:type owl:DatatypeProperty ;
+                              uml:hasStereotype uml:attribute ;
+                              rdfs:comment "(if applicable) In certain cases the physical location of the place of interest does not have a direct point of entry from the street, but may be located inside a larger structure such as a building, complex, office block, apartment, etc." ;
+                              rdfs:label "buildingName" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#StreetDetail.code
+cim:StreetDetail.code rdf:type owl:DatatypeProperty ;
+                      uml:hasStereotype uml:attribute ;
+                      rdfs:comment "(if applicable) Utilities often make use of external reference systems, such as those of the town-planner's department or surveyor general's mapping system, that allocate global reference codes to streets." ;
+                      rdfs:label "code" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#StreetDetail.name
+cim:StreetDetail.name rdf:type owl:DatatypeProperty ;
+                      uml:hasStereotype uml:attribute ;
+                      rdfs:comment "Name of the street." ;
+                      rdfs:label "name" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#StreetDetail.number
+cim:StreetDetail.number rdf:type owl:DatatypeProperty ;
+                        uml:hasStereotype uml:attribute ;
+                        rdfs:comment "Designator of the specific location on the street." ;
+                        rdfs:label "number" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#StreetDetail.prefix
+cim:StreetDetail.prefix rdf:type owl:DatatypeProperty ;
+                        uml:hasStereotype uml:attribute ;
+                        rdfs:comment "Prefix to the street name. For example: North, South, East, West." ;
+                        rdfs:label "prefix" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#StreetDetail.suffix
+cim:StreetDetail.suffix rdf:type owl:DatatypeProperty ;
+                        uml:hasStereotype uml:attribute ;
+                        rdfs:comment "Suffix to the street name. For example: North, South, East, West." ;
+                        rdfs:label "suffix" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#StreetDetail.suiteNumber
+cim:StreetDetail.suiteNumber rdf:type owl:DatatypeProperty ;
+                             uml:hasStereotype uml:attribute ;
+                             rdfs:comment "Number of the apartment or suite." ;
+                             rdfs:label "suiteNumber" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#StreetDetail.type
+cim:StreetDetail.type rdf:type owl:DatatypeProperty ;
+                      uml:hasStereotype uml:attribute ;
+                      rdfs:comment "Type of street. Examples include: street, circle, boulevard, avenue, road, drive, etc." ;
+                      rdfs:label "type" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#StreetDetail.withinTownLimits
+cim:StreetDetail.withinTownLimits rdf:type owl:DatatypeProperty ;
+                                  uml:hasStereotype uml:attribute ;
+                                  rdfs:comment "True if this street is within the legal geographical boundaries of the specified town (default)." ;
+                                  rdfs:label "withinTownLimits" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#TelephoneNumber.areaCode
+cim:TelephoneNumber.areaCode rdf:type owl:DatatypeProperty ;
+                             uml:hasStereotype uml:attribute ;
+                             rdfs:comment "Area or region code." ;
+                             rdfs:label "areaCode" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#TelephoneNumber.cityCode
+cim:TelephoneNumber.cityCode rdf:type owl:DatatypeProperty ;
+                             uml:hasStereotype uml:attribute ;
+                             rdfs:comment "(if applicable) City code." ;
+                             rdfs:label "cityCode" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#TelephoneNumber.countryCode
+cim:TelephoneNumber.countryCode rdf:type owl:DatatypeProperty ;
+                                uml:hasStereotype uml:attribute ;
+                                rdfs:comment "Country code." ;
+                                rdfs:label "countryCode" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#TelephoneNumber.extension
+cim:TelephoneNumber.extension rdf:type owl:DatatypeProperty ;
+                              uml:hasStereotype uml:attribute ;
+                              rdfs:comment "(if applicable) Extension for this telephone number." ;
+                              rdfs:label "extension" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#TelephoneNumber.localNumber
+cim:TelephoneNumber.localNumber rdf:type owl:DatatypeProperty ;
+                                uml:hasStereotype uml:attribute ;
+                                rdfs:comment "Main (local) part of this telephone number." ;
+                                rdfs:label "localNumber" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#TownDetail.code
+cim:TownDetail.code rdf:type owl:DatatypeProperty ;
+                    uml:hasStereotype uml:attribute ;
+                    rdfs:comment "Town code." ;
+                    rdfs:label "code" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#TownDetail.country
+cim:TownDetail.country rdf:type owl:DatatypeProperty ;
+                       uml:hasStereotype uml:attribute ;
+                       rdfs:comment "Name of the country." ;
+                       rdfs:label "country" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#TownDetail.name
+cim:TownDetail.name rdf:type owl:DatatypeProperty ;
+                    uml:hasStereotype uml:attribute ;
+                    rdfs:comment "Town name." ;
+                    rdfs:label "name" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#TownDetail.section
+cim:TownDetail.section rdf:type owl:DatatypeProperty ;
+                       uml:hasStereotype uml:attribute ;
+                       rdfs:comment "Town section. For example, it is common for there to be 36 sections per township." ;
+                       rdfs:label "section" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#TownDetail.stateOrProvince
+cim:TownDetail.stateOrProvince rdf:type owl:DatatypeProperty ;
+                               uml:hasStereotype uml:attribute ;
+                               rdfs:comment "Name of the state or province." ;
+                               rdfs:label "stateOrProvince" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#UsagePoint.isSdp
+cim:UsagePoint.isSdp rdf:type owl:DatatypeProperty ;
+                     uml:hasStereotype uml:attribute ;
+                     rdfs:comment "If true, this usage point is a service delivery point, i.e., a usage point where the ownership of the service changes hands." ;
+                     rdfs:label "isSdp" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#UsagePoint.isVirtual
+cim:UsagePoint.isVirtual rdf:type owl:DatatypeProperty ;
+                         uml:hasStereotype uml:attribute ;
+                         rdfs:comment "If true, this usage point is virtual, i.e., no physical location exists in the network where a meter could be located to collect the meter readings. For example, one may define a virtual usage point to serve as an aggregation of usage for all of a companies premises distributed widely across the distribution territory. Otherwise, the usage point is physical, i.e., there is a logical point in the network where a meter could be located to collect meter readings." ;
+                         rdfs:label "isVirtual" .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://langdale.com.au/2005/UML#Package
+uml:Package rdf:type owl:Class .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#AmiBillingReadyKind
+cim:AmiBillingReadyKind rdf:type owl:Class ;
+                        uml:hasStereotype uml:enumeration ;
+                        rdfs:comment "Lifecycle states of the metering installation at a usage point with respect to readiness for billing via advanced metering infrastructure reads." ;
+                        rdfs:isDefinedBy cim:Package_Metering ;
+                        rdfs:label "AmiBillingReadyKind" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#BaseReading
+cim:BaseReading rdf:type owl:Class ;
+                rdfs:subClassOf cim:IdentifiedObject ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty cim:BaseReading.timePeriod ;
+                                  owl:allValuesFrom cim:DateTimeInterval
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty cim:BaseReading.timePeriod ;
+                                  owl:cardinality "1"^^xsd:nonNegativeInteger
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty cim:BaseReading.source ;
+                                  owl:allValuesFrom xsd:string
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty cim:BaseReading.value ;
+                                  owl:allValuesFrom xsd:string
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty cim:BaseReading.source ;
+                                  owl:cardinality "1"^^xsd:nonNegativeInteger
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty cim:BaseReading.value ;
+                                  owl:maxCardinality "1"^^xsd:nonNegativeInteger
+                                ] ;
+                rdfs:comment """Common representation for reading values. Note that a reading value may have multiple qualities, as produced by various systems ('ReadingQuality.source').
+Roel: make Base reading mandatory""" ;
+                rdfs:isDefinedBy cim:Package_Metering ;
+                rdfs:label "BaseReading" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#Channel
+cim:Channel rdf:type owl:Class ;
+            rdfs:subClassOf cim:IdentifiedObject ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty cim:Channel.ReadingType ;
+                              owl:allValuesFrom cim:ReadingType
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty cim:Channel.Register ;
+                              owl:allValuesFrom cim:Register
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty cim:Channel.ReadingType ;
+                              owl:cardinality "1"^^xsd:nonNegativeInteger
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty cim:Channel.Register ;
+                              owl:cardinality "1"^^xsd:nonNegativeInteger
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty cim:Channel.isVirtual ;
+                              owl:allValuesFrom xsd:boolean
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty cim:Channel.isVirtual ;
+                              owl:cardinality "1"^^xsd:nonNegativeInteger
+                            ] ;
+            uml:hasStereotype uml:concrete ;
+            rdfs:comment "A single path for the collection or reporting of register values over a period of time. For example, a register which measures forward energy can have two channels, one providing bulk quantity readings and the other providing interval readings of a fixed interval size." ;
+            rdfs:isDefinedBy cim:Package_Metering ;
+            rdfs:label "Channel" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#CoordinateSystem
+cim:CoordinateSystem rdf:type owl:Class ;
+                     rdfs:subClassOf cim:IdentifiedObject ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty cim:CoordinateSystem.Location ;
+                                       owl:allValuesFrom cim:Location
+                                     ] ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty cim:CoordinateSystem.Location ;
+                                       owl:cardinality "1"^^xsd:nonNegativeInteger
+                                     ] ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty cim:CoordinateSystem.crsUrn ;
+                                       owl:allValuesFrom xsd:string
+                                     ] ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty cim:IdentifiedObject.aliasName ;
+                                       owl:allValuesFrom xsd:string
+                                     ] ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty cim:IdentifiedObject.mRID ;
+                                       owl:allValuesFrom xsd:string
+                                     ] ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty cim:IdentifiedObject.name ;
+                                       owl:allValuesFrom xsd:string
+                                     ] ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty cim:CoordinateSystem.crsUrn ;
+                                       owl:cardinality "1"^^xsd:nonNegativeInteger
+                                     ] ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty cim:IdentifiedObject.aliasName ;
+                                       owl:cardinality "1"^^xsd:nonNegativeInteger
+                                     ] ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty cim:IdentifiedObject.mRID ;
+                                       owl:cardinality "1"^^xsd:nonNegativeInteger
+                                     ] ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty cim:IdentifiedObject.name ;
+                                       owl:cardinality "1"^^xsd:nonNegativeInteger
+                                     ] ;
+                     rdfs:comment "Coordinate reference system." ;
+                     rdfs:isDefinedBy cim:Package_Common ;
+                     rdfs:label "CoordinateSystem" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#Customer
+cim:Customer rdf:type owl:Class ;
+             rdfs:subClassOf cim:OrganisationRole ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty cim:Customer.kind ;
+                               owl:allValuesFrom cim:CustomerKind
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty cim:Customer.kind ;
+                               owl:cardinality "1"^^xsd:nonNegativeInteger
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty cim:IdentifiedObject.aliasName ;
+                               owl:allValuesFrom xsd:string
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty cim:IdentifiedObject.mRID ;
+                               owl:allValuesFrom xsd:string
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty cim:IdentifiedObject.name ;
+                               owl:allValuesFrom xsd:string
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty cim:IdentifiedObject.aliasName ;
+                               owl:cardinality "1"^^xsd:nonNegativeInteger
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty cim:IdentifiedObject.mRID ;
+                               owl:cardinality "1"^^xsd:nonNegativeInteger
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty cim:IdentifiedObject.name ;
+                               owl:cardinality "1"^^xsd:nonNegativeInteger
+                             ] ;
+             rdfs:comment "Organisation receiving services from service supplier." ;
+             rdfs:isDefinedBy cim:Package_Customers ;
+             rdfs:label "Customer" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#CustomerAgreement
+cim:CustomerAgreement rdf:type owl:Class ;
+                      rdfs:subClassOf cim:IdentifiedObject ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty cim:CustomerAgreement.Customer ;
+                                        owl:allValuesFrom cim:Customer
+                                      ] ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty cim:CustomerAgreement.ServiceCategory ;
+                                        owl:allValuesFrom cim:ServiceCategory
+                                      ] ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty cim:CustomerAgreement.ServiceSupplier ;
+                                        owl:allValuesFrom cim:ServiceSupplier
+                                      ] ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty cim:CustomerAgreement.Customer ;
+                                        owl:cardinality "1"^^xsd:nonNegativeInteger
+                                      ] ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty cim:CustomerAgreement.ServiceCategory ;
+                                        owl:cardinality "1"^^xsd:nonNegativeInteger
+                                      ] ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty cim:CustomerAgreement.ServiceSupplier ;
+                                        owl:cardinality "1"^^xsd:nonNegativeInteger
+                                      ] ;
+                      uml:hasStereotype uml:concrete ;
+                      rdfs:comment "Agreement between the customer and the service supplier to pay for service at a specific service location. It records certain billing information about the type of service provided at the service location and is used during charge creation to determine the type of service." ;
+                      rdfs:isDefinedBy cim:Package_Customers ;
+                      rdfs:label "CustomerAgreement" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#CustomerKind
+cim:CustomerKind rdf:type owl:Class ;
+                 uml:hasStereotype uml:enumeration ;
+                 rdfs:comment "Kind of customer." ;
+                 rdfs:isDefinedBy cim:Package_Customers ;
+                 rdfs:label "CustomerKind" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#DateTimeInterval
+cim:DateTimeInterval rdf:type owl:Class ;
+                     rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                       owl:onProperty cim:DateTimeInterval.end ;
+                                       owl:allValuesFrom xsd:dateTime
+                                     ] ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty cim:DateTimeInterval.start ;
+                                       owl:allValuesFrom xsd:dateTime
+                                     ] ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty cim:DateTimeInterval.end ;
+                                       owl:cardinality "1"^^xsd:nonNegativeInteger
+                                     ] ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty cim:DateTimeInterval.start ;
+                                       owl:cardinality "1"^^xsd:nonNegativeInteger
+                                     ] ;
+                     uml:hasStereotype uml:byreference ,
+                                       uml:compound ;
+                     rdfs:comment "Interval between two date and time points." ;
+                     rdfs:isDefinedBy cim:Package_Domain ;
+                     rdfs:label "DateTimeInterval" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#ElectronicAddress
+cim:ElectronicAddress rdf:type owl:Class ;
+                      rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                        owl:onProperty cim:ElectronicAddress.email1 ;
+                                        owl:allValuesFrom xsd:string
+                                      ] ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty cim:ElectronicAddress.email2 ;
+                                        owl:allValuesFrom xsd:string
+                                      ] ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty cim:ElectronicAddress.lan ;
+                                        owl:allValuesFrom xsd:string
+                                      ] ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty cim:ElectronicAddress.mac ;
+                                        owl:allValuesFrom xsd:string
+                                      ] ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty cim:ElectronicAddress.password ;
+                                        owl:allValuesFrom xsd:string
+                                      ] ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty cim:ElectronicAddress.radio ;
+                                        owl:allValuesFrom xsd:string
+                                      ] ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty cim:ElectronicAddress.userID ;
+                                        owl:allValuesFrom xsd:string
+                                      ] ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty cim:ElectronicAddress.web ;
+                                        owl:allValuesFrom xsd:string
+                                      ] ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty cim:ElectronicAddress.email1 ;
+                                        owl:cardinality "1"^^xsd:nonNegativeInteger
+                                      ] ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty cim:ElectronicAddress.email2 ;
+                                        owl:cardinality "1"^^xsd:nonNegativeInteger
+                                      ] ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty cim:ElectronicAddress.lan ;
+                                        owl:cardinality "1"^^xsd:nonNegativeInteger
+                                      ] ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty cim:ElectronicAddress.mac ;
+                                        owl:cardinality "1"^^xsd:nonNegativeInteger
+                                      ] ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty cim:ElectronicAddress.password ;
+                                        owl:cardinality "1"^^xsd:nonNegativeInteger
+                                      ] ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty cim:ElectronicAddress.radio ;
+                                        owl:cardinality "1"^^xsd:nonNegativeInteger
+                                      ] ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty cim:ElectronicAddress.userID ;
+                                        owl:cardinality "1"^^xsd:nonNegativeInteger
+                                      ] ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty cim:ElectronicAddress.web ;
+                                        owl:cardinality "1"^^xsd:nonNegativeInteger
+                                      ] ;
+                      uml:hasStereotype uml:compound ;
+                      rdfs:comment "Electronic address information." ;
+                      rdfs:isDefinedBy cim:Package_Common ;
+                      rdfs:label "ElectronicAddress" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#EndDevice
+cim:EndDevice rdf:type owl:Class ;
+              rdfs:subClassOf cim:IdentifiedObject ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty cim:EndDevice.EndDeviceFunctions ;
+                                owl:allValuesFrom cim:EndDeviceFunction
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty cim:EndDevice.UsagePoint ;
+                                owl:allValuesFrom cim:UsagePoint
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty cim:EndDevice.EndDeviceFunctions ;
+                                owl:minCardinality "1"^^xsd:nonNegativeInteger
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty cim:EndDevice.UsagePoint ;
+                                owl:cardinality "1"^^xsd:nonNegativeInteger
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty cim:EndDevice.installCode ;
+                                owl:allValuesFrom xsd:string
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty cim:EndDevice.isVirtual ;
+                                owl:allValuesFrom xsd:boolean
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty cim:EndDevice.installCode ;
+                                owl:cardinality "1"^^xsd:nonNegativeInteger
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty cim:EndDevice.isVirtual ;
+                                owl:cardinality "1"^^xsd:nonNegativeInteger
+                              ] ;
+              uml:hasStereotype uml:concrete ;
+              rdfs:comment """Asset container that performs one or more end device functions. One type of end device is a meter which can perform metering, load management, connect/disconnect, accounting functions, etc. Some end devices, such as ones monitoring and controlling air conditioner, refrigerator, pool pumps may be connected to a meter. All end devices may have communication capability defined by the associated communication function(s). An end device may be owned by a consumer, a service provider, utility or otherwise.
+There may be a related end device function that identifies a sensor or control point within a metering application or communications systems (e.g., water, gas, electricity).
+Some devices may use an optical port that conforms to the ANSI C12.18 standard for communications.""" ;
+              rdfs:isDefinedBy cim:Package_Metering ;
+              rdfs:label "EndDevice" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#EndDeviceFunction
+cim:EndDeviceFunction rdf:type owl:Class ;
+                      rdfs:subClassOf cim:IdentifiedObject ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty cim:EndDeviceFunction.EndDevice ;
+                                        owl:allValuesFrom cim:EndDevice
+                                      ] ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty cim:EndDeviceFunction.EndDevice ;
+                                        owl:cardinality "1"^^xsd:nonNegativeInteger
+                                      ] ;
+                      rdfs:comment "Function performed by an end device such as a meter, communication equipment, controllers, etc." ;
+                      rdfs:isDefinedBy cim:Package_Metering ;
+                      rdfs:label "EndDeviceFunction" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#EndDeviceFunctionKind
+cim:EndDeviceFunctionKind rdf:type owl:Class ;
+                          uml:hasStereotype uml:enumeration ;
+                          rdfs:comment "Kind of end device function." ;
+                          rdfs:isDefinedBy cim:Package_Metering ;
+                          rdfs:label "EndDeviceFunctionKind" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#IdentifiedObject
+cim:IdentifiedObject rdf:type owl:Class ;
+                     rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                       owl:onProperty cim:IdentifiedObject.aliasName ;
+                                       owl:allValuesFrom xsd:string
+                                     ] ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty cim:IdentifiedObject.mRID ;
+                                       owl:allValuesFrom xsd:string
+                                     ] ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty cim:IdentifiedObject.name ;
+                                       owl:allValuesFrom xsd:string
+                                     ] ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty cim:IdentifiedObject.aliasName ;
+                                       owl:cardinality "1"^^xsd:nonNegativeInteger
+                                     ] ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty cim:IdentifiedObject.mRID ;
+                                       owl:cardinality "1"^^xsd:nonNegativeInteger
+                                     ] ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty cim:IdentifiedObject.name ;
+                                       owl:cardinality "1"^^xsd:nonNegativeInteger
+                                     ] ;
+                     rdfs:comment "This is a root class to provide common identification for all classes needing identification and naming attributes." ;
+                     rdfs:isDefinedBy cim:Package_Core ;
+                     rdfs:label "IdentifiedObject" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#IntervalBlock
+cim:IntervalBlock rdf:type owl:Class ;
+                  rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                    owl:onProperty cim:IntervalBlock.IntervalReadings ;
+                                    owl:allValuesFrom cim:IntervalReading
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty cim:IntervalBlock.MeterReading ;
+                                    owl:allValuesFrom cim:MeterReading
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty cim:IntervalBlock.ReadingType ;
+                                    owl:allValuesFrom cim:ReadingType
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty cim:IntervalBlock.IntervalReadings ;
+                                    owl:minCardinality "1"^^xsd:nonNegativeInteger
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty cim:IntervalBlock.MeterReading ;
+                                    owl:cardinality "1"^^xsd:nonNegativeInteger
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty cim:IntervalBlock.ReadingType ;
+                                    owl:cardinality "1"^^xsd:nonNegativeInteger
+                                  ] ;
+                  rdfs:comment "Time sequence of readings of the same reading type. Contained interval readings may need conversion through the application of an offset and a scalar defined in associated pending." ;
+                  rdfs:isDefinedBy cim:Package_Metering ;
+                  rdfs:label "IntervalBlock" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#IntervalReading
+cim:IntervalReading rdf:type owl:Class ;
+                    rdfs:subClassOf cim:BaseReading ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty cim:IntervalReading.IntervalBlocks ;
+                                      owl:allValuesFrom cim:IntervalBlock
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty cim:IntervalReading.IntervalBlocks ;
+                                      owl:minCardinality "1"^^xsd:nonNegativeInteger
+                                    ] ;
+                    rdfs:comment """Data captured at regular intervals of time. Interval data could be captured as incremental data, absolute data, or relative data. The source for the data is usually a tariff quantity or an engineering quantity. Data is typically captured in time-tagged, uniform, fixed-length intervals of 5 min, 10 min, 15 min, 30 min, or 60 min.
+Note: Interval Data is sometimes also called \"Interval Data Readings\" (IDR).""" ;
+                    rdfs:isDefinedBy cim:Package_Metering ;
+                    rdfs:label "IntervalReading" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#Location
+cim:Location rdf:type owl:Class ;
+             rdfs:subClassOf cim:IdentifiedObject ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty cim:Location.CoordinateSystem ;
+                               owl:allValuesFrom cim:CoordinateSystem
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty cim:Location.PositionPoints ;
+                               owl:allValuesFrom cim:PositionPoint
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty cim:Location.electronicAddress ;
+                               owl:allValuesFrom cim:ElectronicAddress
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty cim:Location.mainAddress ;
+                               owl:allValuesFrom cim:StreetAddress
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty cim:Location.phone1 ;
+                               owl:allValuesFrom cim:TelephoneNumber
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty cim:Location.phone2 ;
+                               owl:allValuesFrom cim:TelephoneNumber
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty cim:Location.secondaryAddress ;
+                               owl:allValuesFrom cim:StreetAddress
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty cim:Location.status ;
+                               owl:allValuesFrom cim:Status
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty cim:Location.PositionPoints ;
+                               owl:minCardinality "1"^^xsd:nonNegativeInteger
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty cim:Location.CoordinateSystem ;
+                               owl:cardinality "1"^^xsd:nonNegativeInteger
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty cim:Location.electronicAddress ;
+                               owl:cardinality "1"^^xsd:nonNegativeInteger
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty cim:Location.mainAddress ;
+                               owl:cardinality "1"^^xsd:nonNegativeInteger
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty cim:Location.phone1 ;
+                               owl:cardinality "1"^^xsd:nonNegativeInteger
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty cim:Location.phone2 ;
+                               owl:cardinality "1"^^xsd:nonNegativeInteger
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty cim:Location.secondaryAddress ;
+                               owl:cardinality "1"^^xsd:nonNegativeInteger
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty cim:Location.status ;
+                               owl:cardinality "1"^^xsd:nonNegativeInteger
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty cim:IdentifiedObject.aliasName ;
+                               owl:allValuesFrom xsd:string
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty cim:IdentifiedObject.mRID ;
+                               owl:allValuesFrom xsd:string
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty cim:IdentifiedObject.name ;
+                               owl:allValuesFrom xsd:string
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty cim:Location.geoInfoReference ;
+                               owl:allValuesFrom xsd:string
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty cim:Location.type ;
+                               owl:allValuesFrom xsd:string
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty cim:IdentifiedObject.aliasName ;
+                               owl:cardinality "1"^^xsd:nonNegativeInteger
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty cim:IdentifiedObject.mRID ;
+                               owl:cardinality "1"^^xsd:nonNegativeInteger
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty cim:IdentifiedObject.name ;
+                               owl:cardinality "1"^^xsd:nonNegativeInteger
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty cim:Location.geoInfoReference ;
+                               owl:cardinality "1"^^xsd:nonNegativeInteger
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty cim:Location.type ;
+                               owl:cardinality "1"^^xsd:nonNegativeInteger
+                             ] ;
+             rdfs:comment "The place, scene, or point of something where someone or something has been, is, and/or will be at a given moment in time. It can be defined with one or more postition points (coordinates) in a given coordinate system." ;
+             rdfs:isDefinedBy cim:Package_Common ;
+             rdfs:label "Location" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#Meter
+cim:Meter rdf:type owl:Class ;
+          rdfs:subClassOf cim:EndDevice ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty cim:EndDevice.EndDeviceFunctions ;
+                            owl:allValuesFrom cim:EndDeviceFunction
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty cim:EndDevice.UsagePoint ;
+                            owl:allValuesFrom cim:UsagePoint
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty cim:Meter.MeterMultipliers ;
+                            owl:allValuesFrom cim:MeterMultiplier
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty cim:Meter.MeterReadings ;
+                            owl:allValuesFrom cim:MeterReading
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty cim:EndDevice.EndDeviceFunctions ;
+                            owl:minCardinality "1"^^xsd:nonNegativeInteger
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty cim:Meter.MeterMultipliers ;
+                            owl:minCardinality "1"^^xsd:nonNegativeInteger
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty cim:Meter.MeterReadings ;
+                            owl:minCardinality "0"^^xsd:nonNegativeInteger
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty cim:EndDevice.UsagePoint ;
+                            owl:cardinality "1"^^xsd:nonNegativeInteger
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty cim:EndDevice.installCode ;
+                            owl:allValuesFrom xsd:string
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty cim:EndDevice.isVirtual ;
+                            owl:allValuesFrom xsd:boolean
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty cim:Meter.formNumber ;
+                            owl:allValuesFrom xsd:string
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty cim:EndDevice.installCode ;
+                            owl:cardinality "1"^^xsd:nonNegativeInteger
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty cim:EndDevice.isVirtual ;
+                            owl:cardinality "1"^^xsd:nonNegativeInteger
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty cim:Meter.formNumber ;
+                            owl:cardinality "1"^^xsd:nonNegativeInteger
+                          ] ;
+          rdfs:comment "Physical asset that performs the metering role of the usage point. Used for measuring consumption and detection of events." ;
+          rdfs:isDefinedBy cim:Package_Metering ;
+          rdfs:label "Meter" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#MeterMultiplier
+cim:MeterMultiplier rdf:type owl:Class ;
+                    rdfs:subClassOf cim:IdentifiedObject ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty cim:MeterMultiplier.Meter ;
+                                      owl:allValuesFrom cim:Meter
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty cim:MeterMultiplier.kind ;
+                                      owl:allValuesFrom cim:MeterMultiplierKind
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty cim:MeterMultiplier.Meter ;
+                                      owl:cardinality "1"^^xsd:nonNegativeInteger
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty cim:MeterMultiplier.kind ;
+                                      owl:cardinality "1"^^xsd:nonNegativeInteger
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty cim:MeterMultiplier.value ;
+                                      owl:allValuesFrom xsd:float
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty cim:MeterMultiplier.value ;
+                                      owl:cardinality "1"^^xsd:nonNegativeInteger
+                                    ] ;
+                    rdfs:comment "Multiplier applied at the meter." ;
+                    rdfs:isDefinedBy cim:Package_Metering ;
+                    rdfs:label "MeterMultiplier" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#MeterMultiplierKind
+cim:MeterMultiplierKind rdf:type owl:Class ;
+                        uml:hasStereotype uml:enumeration ;
+                        rdfs:comment "Kind of meter multiplier." ;
+                        rdfs:isDefinedBy cim:Package_Metering ;
+                        rdfs:label "MeterMultiplierKind" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#MeterReading
+cim:MeterReading rdf:type owl:Class ;
+                 rdfs:subClassOf cim:IdentifiedObject ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty cim:MeterReading.CustomerAgreement ;
+                                   owl:allValuesFrom cim:CustomerAgreement
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty cim:MeterReading.Meter ;
+                                   owl:allValuesFrom cim:Meter
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty cim:MeterReading.Readings ;
+                                   owl:allValuesFrom cim:Reading
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty cim:MeterReading.UsagePoint ;
+                                   owl:allValuesFrom cim:UsagePoint
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty cim:MeterReading.valuesInterval ;
+                                   owl:allValuesFrom cim:DateTimeInterval
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty cim:MeterReading.Readings ;
+                                   owl:minCardinality "0"^^xsd:nonNegativeInteger
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty cim:MeterReading.CustomerAgreement ;
+                                   owl:cardinality "1"^^xsd:nonNegativeInteger
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty cim:MeterReading.Meter ;
+                                   owl:maxCardinality "1"^^xsd:nonNegativeInteger
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty cim:MeterReading.UsagePoint ;
+                                   owl:maxCardinality "1"^^xsd:nonNegativeInteger
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty cim:MeterReading.valuesInterval ;
+                                   owl:maxCardinality "1"^^xsd:nonNegativeInteger
+                                 ] ;
+                 uml:hasStereotype uml:concrete ;
+                 rdfs:comment "Set of values obtained from the meter." ;
+                 rdfs:isDefinedBy cim:Package_Metering ;
+                 rdfs:label "MeterReading" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#OrganisationRole
+cim:OrganisationRole rdf:type owl:Class ;
+                     rdfs:subClassOf cim:IdentifiedObject ;
+                     uml:hasStereotype uml:concrete ;
+                     rdfs:comment "Identifies a way in which an organisation may participate in the utility enterprise (e.g., customer, manufacturer, etc)." ;
+                     rdfs:isDefinedBy cim:Package_Common ;
+                     rdfs:label "OrganisationRole" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#PositionPoint
+cim:PositionPoint rdf:type owl:Class ;
+                  rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                    owl:onProperty cim:PositionPoint.Location ;
+                                    owl:allValuesFrom cim:Location
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty cim:PositionPoint.Location ;
+                                    owl:cardinality "1"^^xsd:nonNegativeInteger
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty cim:PositionPoint.sequenceNumber ;
+                                    owl:allValuesFrom xsd:integer
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty cim:PositionPoint.xPosition ;
+                                    owl:allValuesFrom xsd:string
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty cim:PositionPoint.yPosition ;
+                                    owl:allValuesFrom xsd:string
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty cim:PositionPoint.zPosition ;
+                                    owl:allValuesFrom xsd:string
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty cim:PositionPoint.sequenceNumber ;
+                                    owl:cardinality "1"^^xsd:nonNegativeInteger
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty cim:PositionPoint.xPosition ;
+                                    owl:cardinality "1"^^xsd:nonNegativeInteger
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty cim:PositionPoint.yPosition ;
+                                    owl:cardinality "1"^^xsd:nonNegativeInteger
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty cim:PositionPoint.zPosition ;
+                                    owl:cardinality "1"^^xsd:nonNegativeInteger
+                                  ] ;
+                  rdfs:comment "Set of spatial coordinates that determine a point, defined in coordinate system specified in 'Location.CoordinateSystem'. Use a single position point instance to desribe a point-oriented location. Use a sequence of position points to describe a line-oriented object (physical location of non-point oriented objects like cables or lines), or area of an object (like a substation or a geographical zone - in this case, have first and last position point with the same values)." ;
+                  rdfs:isDefinedBy cim:Package_Common ;
+                  rdfs:label "PositionPoint" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#Reading
+cim:Reading rdf:type owl:Class ;
+            rdfs:subClassOf cim:BaseReading ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty cim:Reading.MeterReadings ;
+                              owl:allValuesFrom cim:MeterReading
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty cim:Reading.ReadingType ;
+                              owl:allValuesFrom cim:ReadingType
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty cim:Reading.reason ;
+                              owl:allValuesFrom cim:ReadingReasonKind
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty cim:Reading.MeterReadings ;
+                              owl:minCardinality "0"^^xsd:nonNegativeInteger
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty cim:Reading.ReadingType ;
+                              owl:cardinality "1"^^xsd:nonNegativeInteger
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty cim:Reading.reason ;
+                              owl:cardinality "1"^^xsd:nonNegativeInteger
+                            ] ;
+            uml:hasStereotype uml:concrete ;
+            rdfs:comment "Specific value measured by a meter or other asset, or calculated by a system. Each Reading is associated with a specific ReadingType." ;
+            rdfs:isDefinedBy cim:Package_Metering ;
+            rdfs:label "Reading" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#ReadingReasonKind
+cim:ReadingReasonKind rdf:type owl:Class ;
+                      uml:hasStereotype uml:enumeration ;
+                      rdfs:comment "Reason for the reading being taken." ;
+                      rdfs:isDefinedBy cim:Package_Metering ;
+                      rdfs:label "ReadingReasonKind" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#ReadingType
+cim:ReadingType rdf:type owl:Class ;
+                rdfs:subClassOf cim:IdentifiedObject ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty cim:ReadingType.accumulation ;
+                                  owl:allValuesFrom xsd:string
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty cim:ReadingType.aggregate ;
+                                  owl:allValuesFrom xsd:string
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty cim:ReadingType.commodity ;
+                                  owl:allValuesFrom xsd:string
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty cim:ReadingType.flowDirection ;
+                                  owl:allValuesFrom xsd:string
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty cim:ReadingType.measurementKind ;
+                                  owl:allValuesFrom xsd:string
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty cim:ReadingType.measuringPeriod ;
+                                  owl:allValuesFrom xsd:string
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty cim:ReadingType.unit ;
+                                  owl:allValuesFrom xsd:string
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty cim:ReadingType.accumulation ;
+                                  owl:cardinality "1"^^xsd:nonNegativeInteger
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty cim:ReadingType.aggregate ;
+                                  owl:cardinality "1"^^xsd:nonNegativeInteger
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty cim:ReadingType.commodity ;
+                                  owl:cardinality "1"^^xsd:nonNegativeInteger
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty cim:ReadingType.flowDirection ;
+                                  owl:cardinality "1"^^xsd:nonNegativeInteger
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty cim:ReadingType.measurementKind ;
+                                  owl:cardinality "1"^^xsd:nonNegativeInteger
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty cim:ReadingType.measuringPeriod ;
+                                  owl:cardinality "1"^^xsd:nonNegativeInteger
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty cim:ReadingType.unit ;
+                                  owl:cardinality "1"^^xsd:nonNegativeInteger
+                                ] ;
+                uml:hasStereotype uml:concrete ;
+                rdfs:comment "Detailed description for a type of a reading value. Values in attributes allow for creation of recommended codes to be used for identifying reading value types as follows: &lt;macroPeriod&gt;.&lt;aggregate&gt;.&lt;measuringPeriod&gt;.&lt;accumulation&gt;.&lt;flowDirection&gt;.&lt;commodity&gt;.&lt;measurementKind&gt;.&lt;interharmonic.numerator&gt;.&lt;interharmonic.denominator&gt;.&lt;argument.numerator&gt;.&lt;argument.denominator&gt;.&lt;tou&gt;.&lt;cpp&gt;.&lt;consumptionTier&gt;.&lt;phases&gt;.&lt;multiplier&gt;.&lt;unit&gt;.&lt;currency&gt;." ;
+                rdfs:isDefinedBy cim:Package_Metering ;
+                rdfs:label "ReadingType" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#Register
+cim:Register rdf:type owl:Class ;
+             rdfs:subClassOf cim:IdentifiedObject ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty cim:Register.Channels ;
+                               owl:allValuesFrom cim:Channel
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty cim:Register.Channels ;
+                               owl:minCardinality "1"^^xsd:nonNegativeInteger
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty cim:Register.isVirtual ;
+                               owl:allValuesFrom xsd:boolean
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty cim:Register.leftDigitCount ;
+                               owl:allValuesFrom xsd:integer
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty cim:Register.rightDigitCount ;
+                               owl:allValuesFrom xsd:integer
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty cim:Register.isVirtual ;
+                               owl:cardinality "1"^^xsd:nonNegativeInteger
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty cim:Register.leftDigitCount ;
+                               owl:cardinality "1"^^xsd:nonNegativeInteger
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty cim:Register.rightDigitCount ;
+                               owl:cardinality "1"^^xsd:nonNegativeInteger
+                             ] ;
+             rdfs:comment "A device that indicates or records units of the commodity or other quantity measured." ;
+             rdfs:isDefinedBy cim:Package_Metering ;
+             rdfs:label "Register" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#ServiceCategory
+cim:ServiceCategory rdf:type owl:Class ;
+                    rdfs:subClassOf cim:IdentifiedObject ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty cim:ServiceCategory.kind ;
+                                      owl:allValuesFrom cim:ServiceKind
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty cim:ServiceCategory.kind ;
+                                      owl:cardinality "1"^^xsd:nonNegativeInteger
+                                    ] ;
+                    uml:hasStereotype uml:concrete ;
+                    rdfs:comment "Category of service provided to the customer." ;
+                    rdfs:isDefinedBy cim:Package_Customers ;
+                    rdfs:label "ServiceCategory" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#ServiceKind
+cim:ServiceKind rdf:type owl:Class ;
+                uml:hasStereotype uml:enumeration ;
+                rdfs:comment "Kind of service." ;
+                rdfs:isDefinedBy cim:Package_Customers ;
+                rdfs:label "ServiceKind" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#ServiceSupplier
+cim:ServiceSupplier rdf:type owl:Class ;
+                    rdfs:subClassOf cim:OrganisationRole ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty cim:ServiceSupplier.kind ;
+                                      owl:allValuesFrom cim:SupplierKind
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty cim:ServiceSupplier.kind ;
+                                      owl:cardinality "1"^^xsd:nonNegativeInteger
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty cim:ServiceSupplier.issuerIdentificationNumber ;
+                                      owl:allValuesFrom xsd:string
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty cim:ServiceSupplier.issuerIdentificationNumber ;
+                                      owl:cardinality "1"^^xsd:nonNegativeInteger
+                                    ] ;
+                    rdfs:comment "Organisation that provides services to customers." ;
+                    rdfs:isDefinedBy cim:Package_PaymentMetering ;
+                    rdfs:label "ServiceSupplier" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#SimpleEndDeviceFunction
+cim:SimpleEndDeviceFunction rdf:type owl:Class ;
+                            rdfs:subClassOf cim:EndDeviceFunction ,
+                                            [ rdf:type owl:Restriction ;
+                                              owl:onProperty cim:EndDeviceFunction.EndDevice ;
+                                              owl:allValuesFrom cim:EndDevice
+                                            ] ,
+                                            [ rdf:type owl:Restriction ;
+                                              owl:onProperty cim:SimpleEndDeviceFunction.kind ;
+                                              owl:allValuesFrom cim:EndDeviceFunctionKind
+                                            ] ,
+                                            [ rdf:type owl:Restriction ;
+                                              owl:onProperty cim:EndDeviceFunction.EndDevice ;
+                                              owl:cardinality "1"^^xsd:nonNegativeInteger
+                                            ] ,
+                                            [ rdf:type owl:Restriction ;
+                                              owl:onProperty cim:SimpleEndDeviceFunction.kind ;
+                                              owl:cardinality "1"^^xsd:nonNegativeInteger
+                                            ] ;
+                            rdfs:comment "Simple end device function distinguished by 'kind'. Use this class for instances that cannot be represented by another end device function specialisations." ;
+                            rdfs:isDefinedBy cim:Package_Metering ;
+                            rdfs:label "SimpleEndDeviceFunction" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#Status
+cim:Status rdf:type owl:Class ;
+           rdfs:subClassOf [ rdf:type owl:Restriction ;
+                             owl:onProperty cim:Status.dateTime ;
+                             owl:allValuesFrom xsd:dateTime
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty cim:Status.reason ;
+                             owl:allValuesFrom xsd:string
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty cim:Status.remark ;
+                             owl:allValuesFrom xsd:string
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty cim:Status.value ;
+                             owl:allValuesFrom xsd:string
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty cim:Status.dateTime ;
+                             owl:cardinality "1"^^xsd:nonNegativeInteger
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty cim:Status.reason ;
+                             owl:cardinality "1"^^xsd:nonNegativeInteger
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty cim:Status.remark ;
+                             owl:cardinality "1"^^xsd:nonNegativeInteger
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty cim:Status.value ;
+                             owl:cardinality "1"^^xsd:nonNegativeInteger
+                           ] ;
+           uml:hasStereotype uml:compound ;
+           rdfs:comment "Current status information relevant to an entity." ;
+           rdfs:isDefinedBy cim:Package_Common ;
+           rdfs:label "Status" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#StreetAddress
+cim:StreetAddress rdf:type owl:Class ;
+                  rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                    owl:onProperty cim:StreetAddress.streetDetail ;
+                                    owl:allValuesFrom cim:StreetDetail
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty cim:StreetAddress.townDetail ;
+                                    owl:allValuesFrom cim:TownDetail
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty cim:StreetAddress.streetDetail ;
+                                    owl:cardinality "1"^^xsd:nonNegativeInteger
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty cim:StreetAddress.townDetail ;
+                                    owl:cardinality "1"^^xsd:nonNegativeInteger
+                                  ] ;
+                  uml:hasStereotype uml:compound ;
+                  rdfs:comment "General purpose street address information." ;
+                  rdfs:isDefinedBy cim:Package_Common ;
+                  rdfs:label "StreetAddress" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#StreetDetail
+cim:StreetDetail rdf:type owl:Class ;
+                 rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                   owl:onProperty cim:StreetDetail.addressGeneral ;
+                                   owl:allValuesFrom xsd:string
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty cim:StreetDetail.buildingName ;
+                                   owl:allValuesFrom xsd:string
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty cim:StreetDetail.code ;
+                                   owl:allValuesFrom xsd:string
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty cim:StreetDetail.name ;
+                                   owl:allValuesFrom xsd:string
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty cim:StreetDetail.number ;
+                                   owl:allValuesFrom xsd:string
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty cim:StreetDetail.prefix ;
+                                   owl:allValuesFrom xsd:string
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty cim:StreetDetail.suffix ;
+                                   owl:allValuesFrom xsd:string
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty cim:StreetDetail.suiteNumber ;
+                                   owl:allValuesFrom xsd:string
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty cim:StreetDetail.type ;
+                                   owl:allValuesFrom xsd:string
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty cim:StreetDetail.withinTownLimits ;
+                                   owl:allValuesFrom xsd:boolean
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty cim:StreetDetail.addressGeneral ;
+                                   owl:cardinality "1"^^xsd:nonNegativeInteger
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty cim:StreetDetail.buildingName ;
+                                   owl:cardinality "1"^^xsd:nonNegativeInteger
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty cim:StreetDetail.code ;
+                                   owl:cardinality "1"^^xsd:nonNegativeInteger
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty cim:StreetDetail.name ;
+                                   owl:cardinality "1"^^xsd:nonNegativeInteger
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty cim:StreetDetail.number ;
+                                   owl:cardinality "1"^^xsd:nonNegativeInteger
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty cim:StreetDetail.prefix ;
+                                   owl:cardinality "1"^^xsd:nonNegativeInteger
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty cim:StreetDetail.suffix ;
+                                   owl:cardinality "1"^^xsd:nonNegativeInteger
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty cim:StreetDetail.suiteNumber ;
+                                   owl:cardinality "1"^^xsd:nonNegativeInteger
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty cim:StreetDetail.type ;
+                                   owl:cardinality "1"^^xsd:nonNegativeInteger
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty cim:StreetDetail.withinTownLimits ;
+                                   owl:cardinality "1"^^xsd:nonNegativeInteger
+                                 ] ;
+                 uml:hasStereotype uml:compound ;
+                 rdfs:comment "Street details, in the context of address." ;
+                 rdfs:isDefinedBy cim:Package_Common ;
+                 rdfs:label "StreetDetail" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#SupplierKind
+cim:SupplierKind rdf:type owl:Class ;
+                 uml:hasStereotype uml:enumeration ;
+                 rdfs:comment "Kind of supplier." ;
+                 rdfs:isDefinedBy cim:Package_PaymentMetering ;
+                 rdfs:label "SupplierKind" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#TelephoneNumber
+cim:TelephoneNumber rdf:type owl:Class ;
+                    rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                      owl:onProperty cim:TelephoneNumber.areaCode ;
+                                      owl:allValuesFrom xsd:string
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty cim:TelephoneNumber.cityCode ;
+                                      owl:allValuesFrom xsd:string
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty cim:TelephoneNumber.countryCode ;
+                                      owl:allValuesFrom xsd:string
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty cim:TelephoneNumber.extension ;
+                                      owl:allValuesFrom xsd:string
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty cim:TelephoneNumber.localNumber ;
+                                      owl:allValuesFrom xsd:string
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty cim:TelephoneNumber.areaCode ;
+                                      owl:cardinality "1"^^xsd:nonNegativeInteger
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty cim:TelephoneNumber.cityCode ;
+                                      owl:cardinality "1"^^xsd:nonNegativeInteger
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty cim:TelephoneNumber.countryCode ;
+                                      owl:cardinality "1"^^xsd:nonNegativeInteger
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty cim:TelephoneNumber.extension ;
+                                      owl:cardinality "1"^^xsd:nonNegativeInteger
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty cim:TelephoneNumber.localNumber ;
+                                      owl:cardinality "1"^^xsd:nonNegativeInteger
+                                    ] ;
+                    uml:hasStereotype uml:compound ;
+                    rdfs:comment "Telephone number." ;
+                    rdfs:isDefinedBy cim:Package_Common ;
+                    rdfs:label "TelephoneNumber" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#TownDetail
+cim:TownDetail rdf:type owl:Class ;
+               rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                 owl:onProperty cim:TownDetail.code ;
+                                 owl:allValuesFrom xsd:string
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty cim:TownDetail.country ;
+                                 owl:allValuesFrom xsd:string
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty cim:TownDetail.name ;
+                                 owl:allValuesFrom xsd:string
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty cim:TownDetail.section ;
+                                 owl:allValuesFrom xsd:string
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty cim:TownDetail.stateOrProvince ;
+                                 owl:allValuesFrom xsd:string
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty cim:TownDetail.code ;
+                                 owl:cardinality "1"^^xsd:nonNegativeInteger
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty cim:TownDetail.country ;
+                                 owl:cardinality "1"^^xsd:nonNegativeInteger
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty cim:TownDetail.name ;
+                                 owl:cardinality "1"^^xsd:nonNegativeInteger
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty cim:TownDetail.section ;
+                                 owl:cardinality "1"^^xsd:nonNegativeInteger
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty cim:TownDetail.stateOrProvince ;
+                                 owl:cardinality "1"^^xsd:nonNegativeInteger
+                               ] ;
+               uml:hasStereotype uml:compound ;
+               rdfs:comment "Town details, in the context of address." ;
+               rdfs:isDefinedBy cim:Package_Common ;
+               rdfs:label "TownDetail" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#UsagePoint
+cim:UsagePoint rdf:type owl:Class ;
+               rdfs:subClassOf cim:IdentifiedObject ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty cim:UsagePoint.CustomerAgreement ;
+                                 owl:allValuesFrom cim:CustomerAgreement
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty cim:UsagePoint.MeterReadings ;
+                                 owl:allValuesFrom cim:MeterReading
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty cim:UsagePoint.ServiceCategory ;
+                                 owl:allValuesFrom cim:ServiceCategory
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty cim:UsagePoint.ServiceSupplier ;
+                                 owl:allValuesFrom cim:ServiceSupplier
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty cim:UsagePoint.UsagePointLocation ;
+                                 owl:allValuesFrom cim:UsagePointLocation
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty cim:UsagePoint.amiBillingReady ;
+                                 owl:allValuesFrom cim:AmiBillingReadyKind
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty cim:UsagePoint.MeterReadings ;
+                                 owl:minCardinality "1"^^xsd:nonNegativeInteger
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty cim:UsagePoint.CustomerAgreement ;
+                                 owl:cardinality "1"^^xsd:nonNegativeInteger
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty cim:UsagePoint.ServiceCategory ;
+                                 owl:cardinality "1"^^xsd:nonNegativeInteger
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty cim:UsagePoint.ServiceSupplier ;
+                                 owl:cardinality "1"^^xsd:nonNegativeInteger
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty cim:UsagePoint.UsagePointLocation ;
+                                 owl:cardinality "1"^^xsd:nonNegativeInteger
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty cim:UsagePoint.amiBillingReady ;
+                                 owl:cardinality "1"^^xsd:nonNegativeInteger
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty cim:UsagePoint.isSdp ;
+                                 owl:allValuesFrom xsd:boolean
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty cim:UsagePoint.isVirtual ;
+                                 owl:allValuesFrom xsd:boolean
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty cim:UsagePoint.isSdp ;
+                                 owl:cardinality "1"^^xsd:nonNegativeInteger
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty cim:UsagePoint.isVirtual ;
+                                 owl:cardinality "1"^^xsd:nonNegativeInteger
+                               ] ;
+               uml:hasStereotype uml:concrete ;
+               rdfs:comment "Logical or physical point in the network to which readings or events may be attributed. Used at the place where a physical or virtual meter may be located; however, it is not required that a meter be present." ;
+               rdfs:isDefinedBy cim:Package_Metering ;
+               rdfs:label "UsagePoint" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#UsagePointLocation
+cim:UsagePointLocation rdf:type owl:Class ;
+                       rdfs:subClassOf cim:Location ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty cim:UsagePointLocation.UsagePoints ;
+                                         owl:allValuesFrom cim:UsagePoint
+                                       ] ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty cim:UsagePointLocation.UsagePoints ;
+                                         owl:minCardinality "1"^^xsd:nonNegativeInteger
+                                       ] ;
+                       uml:hasStereotype uml:concrete ;
+                       rdfs:comment "Location of an individual usage point." ;
+                       rdfs:isDefinedBy cim:Package_Metering ;
+                       rdfs:label "UsagePointLocation" .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://ontology.tno.nl/cerise/cim-profile#AmiBillingReadyKind.amiCapable
+cim:AmiBillingReadyKind.amiCapable rdf:type owl:NamedIndividual ,
+                                            cim:AmiBillingReadyKind ;
+                                   rdfs:comment "Usage point is equipped with an AMI capable meter that is not yet currently equipped with a communications module." ;
+                                   rdfs:label "amiCapable" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#AmiBillingReadyKind.amiDisabled
+cim:AmiBillingReadyKind.amiDisabled rdf:type owl:NamedIndividual ,
+                                             cim:AmiBillingReadyKind ;
+                                    rdfs:comment "Usage point is equipped with an AMI capable meter; however, the AMI functionality has been disabled or is not being used." ;
+                                    rdfs:label "amiDisabled" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#AmiBillingReadyKind.billingApproved
+cim:AmiBillingReadyKind.billingApproved rdf:type owl:NamedIndividual ,
+                                                 cim:AmiBillingReadyKind ;
+                                        rdfs:comment "Usage point is equipped with an operating AMI capable meter and accuracy has been certified for billing purposes." ;
+                                        rdfs:label "billingApproved" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#AmiBillingReadyKind.enabled
+cim:AmiBillingReadyKind.enabled rdf:type owl:NamedIndividual ,
+                                         cim:AmiBillingReadyKind ;
+                                rdfs:comment "Usage point is equipped with an AMI capable meter having communications capability." ;
+                                rdfs:label "enabled" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#AmiBillingReadyKind.nonAmi
+cim:AmiBillingReadyKind.nonAmi rdf:type owl:NamedIndividual ,
+                                        cim:AmiBillingReadyKind ;
+                               rdfs:comment "Usage point is equipped with a non AMI capable meter." ;
+                               rdfs:label "nonAmi" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#AmiBillingReadyKind.nonMetered
+cim:AmiBillingReadyKind.nonMetered rdf:type owl:NamedIndividual ,
+                                            cim:AmiBillingReadyKind ;
+                                   rdfs:comment "Usage point is not currently equipped with a meter." ;
+                                   rdfs:label "nonMetered" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#AmiBillingReadyKind.operable
+cim:AmiBillingReadyKind.operable rdf:type owl:NamedIndividual ,
+                                          cim:AmiBillingReadyKind ;
+                                 rdfs:comment "Usage point is equipped with an AMI capable meter that is functioning and communicating with the AMI network." ;
+                                 rdfs:label "operable" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#CustomerKind.commercialIndustrial
+cim:CustomerKind.commercialIndustrial rdf:type owl:NamedIndividual ,
+                                               cim:CustomerKind ;
+                                      rdfs:comment "Commercial industrial customer." ;
+                                      rdfs:label "commercialIndustrial" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#CustomerKind.energyServiceScheduler
+cim:CustomerKind.energyServiceScheduler rdf:type owl:NamedIndividual ,
+                                                 cim:CustomerKind ;
+                                        rdfs:comment "Customer as energy service scheduler." ;
+                                        rdfs:label "energyServiceScheduler" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#CustomerKind.energyServiceSupplier
+cim:CustomerKind.energyServiceSupplier rdf:type owl:NamedIndividual ,
+                                                cim:CustomerKind ;
+                                       rdfs:comment "Customer as energy service supplier." ;
+                                       rdfs:label "energyServiceSupplier" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#CustomerKind.internalUse
+cim:CustomerKind.internalUse rdf:type owl:NamedIndividual ,
+                                      cim:CustomerKind ;
+                             rdfs:comment "Internal use customer." ;
+                             rdfs:label "internalUse" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#CustomerKind.other
+cim:CustomerKind.other rdf:type owl:NamedIndividual ,
+                                cim:CustomerKind ;
+                       rdfs:comment "Other kind of customer." ;
+                       rdfs:label "other" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#CustomerKind.pumpingLoad
+cim:CustomerKind.pumpingLoad rdf:type owl:NamedIndividual ,
+                                      cim:CustomerKind ;
+                             rdfs:comment "Pumping load customer." ;
+                             rdfs:label "pumpingLoad" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#CustomerKind.residential
+cim:CustomerKind.residential rdf:type owl:NamedIndividual ,
+                                      cim:CustomerKind ;
+                             rdfs:comment "Residential customer." ;
+                             rdfs:label "residential" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#CustomerKind.residentialAndCommercial
+cim:CustomerKind.residentialAndCommercial rdf:type owl:NamedIndividual ,
+                                                   cim:CustomerKind ;
+                                          rdfs:comment "Residential and commercial customer." ;
+                                          rdfs:label "residentialAndCommercial" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#CustomerKind.residentialAndStreetlight
+cim:CustomerKind.residentialAndStreetlight rdf:type owl:NamedIndividual ,
+                                                    cim:CustomerKind ;
+                                           rdfs:comment "Residential and streetlight customer." ;
+                                           rdfs:label "residentialAndStreetlight" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#CustomerKind.residentialFarmService
+cim:CustomerKind.residentialFarmService rdf:type owl:NamedIndividual ,
+                                                 cim:CustomerKind ;
+                                        rdfs:comment "Residential farm service customer." ;
+                                        rdfs:label "residentialFarmService" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#CustomerKind.residentialStreetlightOthers
+cim:CustomerKind.residentialStreetlightOthers rdf:type owl:NamedIndividual ,
+                                                       cim:CustomerKind ;
+                                              rdfs:comment "Residential streetlight or other related customer." ;
+                                              rdfs:label "residentialStreetlightOthers" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#CustomerKind.windMachine
+cim:CustomerKind.windMachine rdf:type owl:NamedIndividual ,
+                                      cim:CustomerKind ;
+                             rdfs:comment "Wind machine customer." ;
+                             rdfs:label "windMachine" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#EndDeviceFunctionKind.autonomousDst
+cim:EndDeviceFunctionKind.autonomousDst rdf:type owl:NamedIndividual ,
+                                                 cim:EndDeviceFunctionKind ;
+                                        rdfs:comment "Autonomous application of daylight savings time (DST)." ;
+                                        rdfs:label "autonomousDst" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#EndDeviceFunctionKind.demandResponse
+cim:EndDeviceFunctionKind.demandResponse rdf:type owl:NamedIndividual ,
+                                                  cim:EndDeviceFunctionKind ;
+                                         rdfs:comment "Demand response functions." ;
+                                         rdfs:label "demandResponse" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#EndDeviceFunctionKind.electricMetering
+cim:EndDeviceFunctionKind.electricMetering rdf:type owl:NamedIndividual ,
+                                                    cim:EndDeviceFunctionKind ;
+                                           rdfs:comment "Electricity metering." ;
+                                           rdfs:label "electricMetering" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#EndDeviceFunctionKind.gasMetering
+cim:EndDeviceFunctionKind.gasMetering rdf:type owl:NamedIndividual ,
+                                               cim:EndDeviceFunctionKind ;
+                                      rdfs:comment "Gas metering." ;
+                                      rdfs:label "gasMetering" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#EndDeviceFunctionKind.metrology
+cim:EndDeviceFunctionKind.metrology rdf:type owl:NamedIndividual ,
+                                             cim:EndDeviceFunctionKind ;
+                                    rdfs:comment "Presentation of metered values to a user or another system (always a function of a meter, but might not be supported by a load control unit)." ;
+                                    rdfs:label "metrology" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#EndDeviceFunctionKind.onRequestRead
+cim:EndDeviceFunctionKind.onRequestRead rdf:type owl:NamedIndividual ,
+                                                 cim:EndDeviceFunctionKind ;
+                                        rdfs:comment "On-request reads." ;
+                                        rdfs:label "onRequestRead" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#EndDeviceFunctionKind.outageHistory
+cim:EndDeviceFunctionKind.outageHistory rdf:type owl:NamedIndividual ,
+                                                 cim:EndDeviceFunctionKind ;
+                                        rdfs:comment "Reporting historical power interruption data." ;
+                                        rdfs:label "outageHistory" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#EndDeviceFunctionKind.relaysProgramming
+cim:EndDeviceFunctionKind.relaysProgramming rdf:type owl:NamedIndividual ,
+                                                     cim:EndDeviceFunctionKind ;
+                                            rdfs:comment "Support for one or more relays that may be programmable in the meter (and tied to TOU, time pulse, load control or other functions)." ;
+                                            rdfs:label "relaysProgramming" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#EndDeviceFunctionKind.reverseFlow
+cim:EndDeviceFunctionKind.reverseFlow rdf:type owl:NamedIndividual ,
+                                               cim:EndDeviceFunctionKind ;
+                                      rdfs:comment "Detection and monitoring of reverse flow." ;
+                                      rdfs:label "reverseFlow" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#EndDeviceFunctionKind.waterMetering
+cim:EndDeviceFunctionKind.waterMetering rdf:type owl:NamedIndividual ,
+                                                 cim:EndDeviceFunctionKind ;
+                                        rdfs:comment "Water metering." ;
+                                        rdfs:label "waterMetering" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#MeterMultiplierKind.ctRatio
+cim:MeterMultiplierKind.ctRatio rdf:type owl:NamedIndividual ,
+                                         cim:MeterMultiplierKind ;
+                                rdfs:comment "Current transformer ratio used to convert associated quantities to real measurements." ;
+                                rdfs:label "ctRatio" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#MeterMultiplierKind.kE
+cim:MeterMultiplierKind.kE rdf:type owl:NamedIndividual ,
+                                    cim:MeterMultiplierKind ;
+                           rdfs:comment "Test constant." ;
+                           rdfs:label "kE" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#MeterMultiplierKind.kH
+cim:MeterMultiplierKind.kH rdf:type owl:NamedIndividual ,
+                                    cim:MeterMultiplierKind ;
+                           rdfs:comment "Meter kh (watthour) constant. The number of watthours that must be applied to the meter to cause one disk revolution for an electromechanical meter or the number of watthours represented by one increment pulse for an electronic meter." ;
+                           rdfs:label "kH" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#MeterMultiplierKind.kR
+cim:MeterMultiplierKind.kR rdf:type owl:NamedIndividual ,
+                                    cim:MeterMultiplierKind ;
+                           rdfs:comment "Register multiplier. The number to multiply the register reading by in order to get kWh." ;
+                           rdfs:label "kR" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#MeterMultiplierKind.ptRatio
+cim:MeterMultiplierKind.ptRatio rdf:type owl:NamedIndividual ,
+                                         cim:MeterMultiplierKind ;
+                                rdfs:comment "Potential transformer ratio used to convert associated quantities to real measurements." ;
+                                rdfs:label "ptRatio" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#MeterMultiplierKind.transformerRatio
+cim:MeterMultiplierKind.transformerRatio rdf:type owl:NamedIndividual ,
+                                                  cim:MeterMultiplierKind ;
+                                         rdfs:comment "Product of the CT ratio and PT ratio." ;
+                                         rdfs:label "transformerRatio" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#Package_Base
+cim:Package_Base rdf:type owl:NamedIndividual ,
+                          uml:Package ;
+                 rdfs:comment "The equivalents package models equivalent networks." ;
+                 rdfs:isDefinedBy cim:Package_IEC61970 ;
+                 rdfs:label "Base" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#Package_Common
+cim:Package_Common rdf:type owl:NamedIndividual ,
+                            uml:Package ;
+                   rdfs:comment "This package contains the information classes that support distribution management in general." ;
+                   rdfs:isDefinedBy cim:Package_IEC61968 ;
+                   rdfs:label "Common" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#Package_Core
+cim:Package_Core rdf:type owl:NamedIndividual ,
+                          uml:Package ;
+                 rdfs:comment "Contains the core PowerSystemResource and ConductingEquipment entities shared by all applications plus common collections of those entities. Not all applications require all the Core entities.  This package does not depend on any other package except the Domain package, but most of the other packages have associations and generalizations that depend on it." ;
+                 rdfs:isDefinedBy cim:Package_Base ;
+                 rdfs:label "Core" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#Package_Customers
+cim:Package_Customers rdf:type owl:NamedIndividual ,
+                               uml:Package ;
+                      rdfs:comment "This package contains the core information classes that support customer billing applications." ;
+                      rdfs:isDefinedBy cim:Package_IEC61968 ;
+                      rdfs:label "Customers" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#Package_Domain
+cim:Package_Domain rdf:type owl:NamedIndividual ,
+                            uml:Package ;
+                   rdfs:comment """The domain package define primitive datatypes that are used by classes in other packages. Stereotypes are used to describe the datatypes. The following stereotypes are defined:
+&lt;&lt;enumeration&gt;&gt; A list of permissible constant values.
+&lt;&lt;Primitive&gt;&gt; The most basic data types used to compose all other data types.
+&lt;&lt;CIMDatatype&gt;&gt; A datatype that contains a value attribute, an optional unit of measure and a unit multiplier. The unit and multiplier may be specified as a static variable initialized to the allowed value.
+&lt;&lt;Compound&gt;&gt; A composite of Primitive, enumeration, CIMDatatype or othe Compound classes, as long as the Compound classes do not recurse.""" ;
+                   rdfs:isDefinedBy cim:Package_Base ;
+                   rdfs:label "Domain" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#Package_IEC61968
+cim:Package_IEC61968 rdf:type owl:NamedIndividual ,
+                              uml:Package ;
+                     rdfs:comment """This package contains only diagrams that are used in the introduction of IEC61968-11 and that should not be printed in its Clause 6 describing the UML model (due to the naming convention, this package will be considered as informative).
+Other specifications may freeley reuse some of these diagrams from their templates.""" ;
+                     rdfs:label "IEC61968" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#Package_IEC61970
+cim:Package_IEC61970 rdf:type owl:NamedIndividual ,
+                              uml:Package ;
+                     rdfs:comment "Top package for IEC 61970." ;
+                     rdfs:label "IEC61970" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#Package_Metering
+cim:Package_Metering rdf:type owl:NamedIndividual ,
+                              uml:Package ;
+                     rdfs:comment "This package contains the core information classes that support end device applications with specialized classes for metering and premise are network devices, and remote reading functions. These classes are generally associated with the point where a service is delivered to the customer." ;
+                     rdfs:isDefinedBy cim:Package_IEC61968 ;
+                     rdfs:label "Metering" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#Package_PaymentMetering
+cim:Package_PaymentMetering rdf:type owl:NamedIndividual ,
+                                     uml:Package ;
+                            rdfs:comment "This package is an extension of the Metering package and contains the information classes that support specialised applications such as prepayment metering. These classes are generally associated with the collection and control of revenue from the customer for a delivered service." ;
+                            rdfs:isDefinedBy cim:Package_IEC61968 ;
+                            rdfs:label "PaymentMetering" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#ReadingReasonKind.billing
+cim:ReadingReasonKind.billing rdf:type owl:NamedIndividual ,
+                                       cim:ReadingReasonKind ;
+                              rdfs:comment "Reading(s) taken or to be taken in response to a billing-related inquiry by a customer or other party. A variant of 'inquiry'." ;
+                              rdfs:label "billing" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#ReadingReasonKind.demandReset
+cim:ReadingReasonKind.demandReset rdf:type owl:NamedIndividual ,
+                                           cim:ReadingReasonKind ;
+                                  rdfs:comment "Reading(s) taken or to be taken in conjunction with the resetting of one or more demand registers in a meter." ;
+                                  rdfs:label "demandReset" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#ReadingReasonKind.inquiry
+cim:ReadingReasonKind.inquiry rdf:type owl:NamedIndividual ,
+                                       cim:ReadingReasonKind ;
+                              rdfs:comment "Reading(s) taken or to be taken in response to an inquiry by a customer or other party." ;
+                              rdfs:label "inquiry" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#ReadingReasonKind.installation
+cim:ReadingReasonKind.installation rdf:type owl:NamedIndividual ,
+                                            cim:ReadingReasonKind ;
+                                   rdfs:comment "Reading(s) taken or to be taken in conjunction with installation of a meter." ;
+                                   rdfs:label "installation" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#ReadingReasonKind.loadManagement
+cim:ReadingReasonKind.loadManagement rdf:type owl:NamedIndividual ,
+                                              cim:ReadingReasonKind ;
+                                     rdfs:comment "Reading(s) taken or to be taken to support management of loads on distribution networks or devices." ;
+                                     rdfs:label "loadManagement" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#ReadingReasonKind.loadResearch
+cim:ReadingReasonKind.loadResearch rdf:type owl:NamedIndividual ,
+                                            cim:ReadingReasonKind ;
+                                   rdfs:comment "Reading(s) taken or to be taken to support research and analysis of loads on distribution networks or devices." ;
+                                   rdfs:label "loadResearch" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#ReadingReasonKind.moveIn
+cim:ReadingReasonKind.moveIn rdf:type owl:NamedIndividual ,
+                                      cim:ReadingReasonKind ;
+                             rdfs:comment "Reading(s) taken or to be taken in conjunction with a customer move-in event." ;
+                             rdfs:label "moveIn" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#ReadingReasonKind.moveOut
+cim:ReadingReasonKind.moveOut rdf:type owl:NamedIndividual ,
+                                       cim:ReadingReasonKind ;
+                              rdfs:comment "Reading(s) taken or to be taken in conjunction with a customer move-out event." ;
+                              rdfs:label "moveOut" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#ReadingReasonKind.other
+cim:ReadingReasonKind.other rdf:type owl:NamedIndividual ,
+                                     cim:ReadingReasonKind ;
+                            rdfs:comment "Reading(s) taken or to be taken for some other reason or purpose." ;
+                            rdfs:label "other" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#ReadingReasonKind.removal
+cim:ReadingReasonKind.removal rdf:type owl:NamedIndividual ,
+                                       cim:ReadingReasonKind ;
+                              rdfs:comment "Reading(s) taken or to be taken in conjunction with removal of a meter." ;
+                              rdfs:label "removal" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#ReadingReasonKind.serviceConnect
+cim:ReadingReasonKind.serviceConnect rdf:type owl:NamedIndividual ,
+                                              cim:ReadingReasonKind ;
+                                     rdfs:comment "Reading(s) taken or to be taken in conjunction with a connection or re-connection of service." ;
+                                     rdfs:label "serviceConnect" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#ReadingReasonKind.serviceDisconnect
+cim:ReadingReasonKind.serviceDisconnect rdf:type owl:NamedIndividual ,
+                                                 cim:ReadingReasonKind ;
+                                        rdfs:comment "Reading(s) taken or to be taken in conjunction with a disconnection of service." ;
+                                        rdfs:label "serviceDisconnect" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#ServiceKind.electricity
+cim:ServiceKind.electricity rdf:type owl:NamedIndividual ,
+                                     cim:ServiceKind ;
+                            rdfs:comment "Electricity service." ;
+                            rdfs:label "electricity" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#ServiceKind.gas
+cim:ServiceKind.gas rdf:type owl:NamedIndividual ,
+                             cim:ServiceKind ;
+                    rdfs:comment "Gas service." ;
+                    rdfs:label "gas" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#ServiceKind.heat
+cim:ServiceKind.heat rdf:type owl:NamedIndividual ,
+                              cim:ServiceKind ;
+                     rdfs:comment "Heat service." ;
+                     rdfs:label "heat" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#ServiceKind.internet
+cim:ServiceKind.internet rdf:type owl:NamedIndividual ,
+                                  cim:ServiceKind ;
+                         rdfs:comment "Internet service." ;
+                         rdfs:label "internet" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#ServiceKind.other
+cim:ServiceKind.other rdf:type owl:NamedIndividual ,
+                               cim:ServiceKind ;
+                      rdfs:comment "Other kind of service." ;
+                      rdfs:label "other" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#ServiceKind.rates
+cim:ServiceKind.rates rdf:type owl:NamedIndividual ,
+                               cim:ServiceKind ;
+                      rdfs:comment "Rates (e.g. tax, charge, toll, duty, tariff, etc.) service." ;
+                      rdfs:label "rates" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#ServiceKind.refuse
+cim:ServiceKind.refuse rdf:type owl:NamedIndividual ,
+                                cim:ServiceKind ;
+                       rdfs:comment "Refuse (waster) service." ;
+                       rdfs:label "refuse" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#ServiceKind.sewerage
+cim:ServiceKind.sewerage rdf:type owl:NamedIndividual ,
+                                  cim:ServiceKind ;
+                         rdfs:comment "Sewerage service." ;
+                         rdfs:label "sewerage" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#ServiceKind.time
+cim:ServiceKind.time rdf:type owl:NamedIndividual ,
+                              cim:ServiceKind ;
+                     rdfs:comment "Time service." ;
+                     rdfs:label "time" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#ServiceKind.tvLicence
+cim:ServiceKind.tvLicence rdf:type owl:NamedIndividual ,
+                                   cim:ServiceKind ;
+                          rdfs:comment "TV license service." ;
+                          rdfs:label "tvLicence" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#ServiceKind.water
+cim:ServiceKind.water rdf:type owl:NamedIndividual ,
+                               cim:ServiceKind ;
+                      rdfs:comment "Water service." ;
+                      rdfs:label "water" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#SupplierKind.other
+cim:SupplierKind.other rdf:type owl:NamedIndividual ,
+                                cim:SupplierKind ;
+                       rdfs:comment "Other kind of supplier." ;
+                       rdfs:label "other" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#SupplierKind.retailer
+cim:SupplierKind.retailer rdf:type owl:NamedIndividual ,
+                                   cim:SupplierKind ;
+                          rdfs:comment "Entity that sells the service, but does not deliver to the customer; applies to the deregulated markets." ;
+                          rdfs:label "retailer" .
+
+
+###  http://ontology.tno.nl/cerise/cim-profile#SupplierKind.utility
+cim:SupplierKind.utility rdf:type owl:NamedIndividual ,
+                                  cim:SupplierKind ;
+                         rdfs:comment "Entity that delivers the service to the customer." ;
+                         rdfs:label "utility" .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi

@@ -1,0 +1,1232 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.w3.org/2002/07/owl"
+     xmlns:emo="http://www.mascem.gecad.isep.ipp.pt/ontologies/electricity-markets.owl#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    <Ontology rdf:about="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl">
+        <imports rdf:resource="http://www.mascem.gecad.isep.ipp.pt/ontologies/electricity-markets.owl"/>
+    </Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#hasRequest -->
+
+    <ObjectProperty rdf:about="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#hasRequest">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#hasStrategy -->
+
+    <ObjectProperty rdf:about="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#hasStrategy"/>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#participateInSession -->
+
+    <ObjectProperty rdf:about="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#participateInSession"/>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#requiresTool -->
+
+    <ObjectProperty rdf:about="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#requiresTool"/>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#useScenarioAnalysisMethod -->
+
+    <ObjectProperty rdf:about="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#useScenarioAnalysisMethod">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#useStrategy -->
+
+    <ObjectProperty rdf:about="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#useStrategy"/>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#useTool -->
+
+    <ObjectProperty rdf:about="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#useTool"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#a -->
+
+    <DatatypeProperty rdf:about="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#a">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#admissibleError -->
+
+    <DatatypeProperty rdf:about="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#admissibleError">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#angle -->
+
+    <DatatypeProperty rdf:about="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#angle">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#b -->
+
+    <DatatypeProperty rdf:about="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#b">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#bidInterval -->
+
+    <DatatypeProperty rdf:about="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#bidInterval">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#bidsNumber -->
+
+    <DatatypeProperty rdf:about="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#bidsNumber">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#e -->
+
+    <DatatypeProperty rdf:about="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#e">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#eInsensitive -->
+
+    <DatatypeProperty rdf:about="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#eInsensitive">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#error -->
+
+    <DatatypeProperty rdf:about="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#error">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#experimentation -->
+
+    <DatatypeProperty rdf:about="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#experimentation">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#firstCost -->
+
+    <DatatypeProperty rdf:about="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#firstCost">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#hiddenNodes -->
+
+    <DatatypeProperty rdf:about="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#hiddenNodes">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#initQ -->
+
+    <DatatypeProperty rdf:about="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#initQ">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#kernelFunction -->
+
+    <DatatypeProperty rdf:about="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#kernelFunction">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#learningRate -->
+
+    <DatatypeProperty rdf:about="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#learningRate">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#limit -->
+
+    <DatatypeProperty rdf:about="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#limit">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#m1 -->
+
+    <DatatypeProperty rdf:about="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#m1">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#m2 -->
+
+    <DatatypeProperty rdf:about="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#m2">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#m3 -->
+
+    <DatatypeProperty rdf:about="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#m3">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#maxProduction -->
+
+    <DatatypeProperty rdf:about="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#maxProduction">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#message -->
+
+    <DatatypeProperty rdf:about="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#message">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#minProduction -->
+
+    <DatatypeProperty rdf:about="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#minProduction">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#numberOfScenarios -->
+
+    <DatatypeProperty rdf:about="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#numberOfScenarios">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#offset -->
+
+    <DatatypeProperty rdf:about="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#offset">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#r -->
+
+    <DatatypeProperty rdf:about="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#r">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#recency -->
+
+    <DatatypeProperty rdf:about="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#recency">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#riMaxL -->
+
+    <DatatypeProperty rdf:about="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#riMaxL">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#riMaxU -->
+
+    <DatatypeProperty rdf:about="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#riMaxU">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#risk -->
+
+    <DatatypeProperty rdf:about="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#risk">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#scalingFactorA -->
+
+    <DatatypeProperty rdf:about="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#scalingFactorA">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#scalingFactorB -->
+
+    <DatatypeProperty rdf:about="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#scalingFactorB">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#secondCost -->
+
+    <DatatypeProperty rdf:about="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#secondCost">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#temperature -->
+
+    <DatatypeProperty rdf:about="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#temperature">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#totalAmountToNegotiate -->
+
+    <DatatypeProperty rdf:about="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#totalAmountToNegotiate">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#trainingLimit -->
+
+    <DatatypeProperty rdf:about="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#trainingLimit">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#useSimulatedAnnealing -->
+
+    <DatatypeProperty rdf:about="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#useSimulatedAnnealing">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#weight -->
+
+    <DatatypeProperty rdf:about="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#weight">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#ALBidS -->
+
+    <Class rdf:about="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#ALBidS">
+        <rdfs:subClassOf rdf:resource="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#Tool"/>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#hasStrategy"/>
+                <someValuesFrom rdf:resource="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#MarketStrategy"/>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#hasStrategy"/>
+                <someValuesFrom rdf:resource="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#RLAStrategy"/>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">This class represents an abstract ALBidS. The ALBidS tool contains Market Strategies and RLA Strategies that are designed to help players that participate in day-ahead market type.</rdfs:comment>
+    </Class>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#AMES -->
+
+    <Class rdf:about="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#AMES">
+        <rdfs:subClassOf rdf:resource="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#MarketStrategy"/>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#a"/>
+                <qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</qualifiedCardinality>
+                <onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#admissibleError"/>
+                <qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</qualifiedCardinality>
+                <onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#b"/>
+                <qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</qualifiedCardinality>
+                <onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#e"/>
+                <qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</qualifiedCardinality>
+                <onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#initQ"/>
+                <qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</qualifiedCardinality>
+                <onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#m1"/>
+                <qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</qualifiedCardinality>
+                <onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#m2"/>
+                <qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</qualifiedCardinality>
+                <onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#m3"/>
+                <qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</qualifiedCardinality>
+                <onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#maxProduction"/>
+                <qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</qualifiedCardinality>
+                <onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#minProduction"/>
+                <qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</qualifiedCardinality>
+                <onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#r"/>
+                <qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</qualifiedCardinality>
+                <onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#riMaxL"/>
+                <qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</qualifiedCardinality>
+                <onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#riMaxU"/>
+                <qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</qualifiedCardinality>
+                <onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#temperature"/>
+                <qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</qualifiedCardinality>
+                <onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#useSimulatedAnnealing"/>
+                <qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</qualifiedCardinality>
+                <onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+            </Restriction>
+        </rdfs:subClassOf>
+    </Class>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#ANN -->
+
+    <Class rdf:about="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#ANN">
+        <rdfs:subClassOf rdf:resource="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#MarketStrategy"/>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#hiddenNodes"/>
+                <qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</qualifiedCardinality>
+                <onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#unsignedInt"/>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#trainingLimit"/>
+                <qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</qualifiedCardinality>
+                <onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#unsignedInt"/>
+            </Restriction>
+        </rdfs:subClassOf>
+    </Class>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#ANNMetalearner -->
+
+    <Class rdf:about="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#ANNMetalearner">
+        <rdfs:subClassOf rdf:resource="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#MarketStrategy"/>
+    </Class>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#AdaptiveDerivativeFollowing -->
+
+    <Class rdf:about="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#AdaptiveDerivativeFollowing">
+        <rdfs:subClassOf rdf:resource="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#MarketStrategy"/>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#scalingFactorA"/>
+                <qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</qualifiedCardinality>
+                <onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#scalingFactorB"/>
+                <qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</qualifiedCardinality>
+                <onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+            </Restriction>
+        </rdfs:subClassOf>
+    </Class>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#Average1 -->
+
+    <Class rdf:about="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#Average1">
+        <rdfs:subClassOf rdf:resource="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#MarketStrategy"/>
+    </Class>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#Average2 -->
+
+    <Class rdf:about="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#Average2">
+        <rdfs:subClassOf rdf:resource="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#MarketStrategy"/>
+    </Class>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#Average3 -->
+
+    <Class rdf:about="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#Average3">
+        <rdfs:subClassOf rdf:resource="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#MarketStrategy"/>
+    </Class>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#Average4 -->
+
+    <Class rdf:about="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#Average4">
+        <rdfs:subClassOf rdf:resource="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#MarketStrategy"/>
+    </Class>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#BayesianTheorem -->
+
+    <Class rdf:about="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#BayesianTheorem">
+        <rdfs:subClassOf rdf:resource="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#RLAStrategy"/>
+    </Class>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#Bilat -->
+
+    <Class rdf:about="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#Bilat">
+        <rdfs:subClassOf rdf:resource="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#Tool"/>
+        <rdfs:comment xml:lang="en">This class represents an abstract Bilat. The Bilat tool offers decision support for players that want to establish bilateral contracts.</rdfs:comment>
+    </Class>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#CaseBaseLearning -->
+
+    <Class rdf:about="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#CaseBaseLearning">
+        <rdfs:subClassOf rdf:resource="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#PortfolioStrategy"/>
+    </Class>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#ComposedGoalDirected -->
+
+    <Class rdf:about="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#ComposedGoalDirected">
+        <rdfs:subClassOf rdf:resource="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#MarketStrategy"/>
+    </Class>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#DeterminismTheory -->
+
+    <Class rdf:about="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#DeterminismTheory">
+        <rdfs:subClassOf rdf:resource="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#MarketStrategy"/>
+    </Class>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#Deterministic -->
+
+    <Class rdf:about="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#Deterministic">
+        <rdfs:subClassOf rdf:resource="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#PortfolioStrategy"/>
+    </Class>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#EPSO -->
+
+    <Class rdf:about="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#EPSO">
+        <rdfs:subClassOf rdf:resource="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#PortfolioStrategy"/>
+    </Class>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#EconomicAnalysis -->
+
+    <Class rdf:about="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#EconomicAnalysis">
+        <rdfs:subClassOf rdf:resource="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#MarketStrategy"/>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#risk"/>
+                <qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</qualifiedCardinality>
+                <onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+            </Restriction>
+        </rdfs:subClassOf>
+    </Class>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#ErrorTheoryA -->
+
+    <Class rdf:about="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#ErrorTheoryA">
+        <rdfs:subClassOf rdf:resource="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#MarketStrategy"/>
+    </Class>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#ErrorTheoryB -->
+
+    <Class rdf:about="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#ErrorTheoryB">
+        <rdfs:subClassOf rdf:resource="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#MarketStrategy"/>
+    </Class>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#ErrorTheoryC -->
+
+    <Class rdf:about="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#ErrorTheoryC">
+        <rdfs:subClassOf rdf:resource="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#MarketStrategy"/>
+    </Class>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#GA -->
+
+    <Class rdf:about="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#GA">
+        <rdfs:subClassOf rdf:resource="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#PortfolioStrategy"/>
+    </Class>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#GameTheory -->
+
+    <Class rdf:about="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#GameTheory">
+        <rdfs:subClassOf rdf:resource="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#MarketStrategy"/>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#useScenarioAnalysisMethod"/>
+                <qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</qualifiedCardinality>
+                <onClass rdf:resource="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#ScenarioAnalysisMethod"/>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#bidInterval"/>
+                <qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</qualifiedCardinality>
+                <onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#unsignedInt"/>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#bidsNumber"/>
+                <qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</qualifiedCardinality>
+                <onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#unsignedInt"/>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#numberOfScenarios"/>
+                <qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</qualifiedCardinality>
+                <onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#unsignedInt"/>
+            </Restriction>
+        </rdfs:subClassOf>
+    </Class>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#LearningMethod -->
+
+    <Class rdf:about="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#LearningMethod">
+        <rdfs:subClassOf rdf:resource="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#ScenarioAnalysisMethod"/>
+    </Class>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#LinearRegression1 -->
+
+    <Class rdf:about="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#LinearRegression1">
+        <rdfs:subClassOf rdf:resource="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#MarketStrategy"/>
+    </Class>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#LinearRegression2 -->
+
+    <Class rdf:about="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#LinearRegression2">
+        <rdfs:subClassOf rdf:resource="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#MarketStrategy"/>
+    </Class>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#LinearRegression3 -->
+
+    <Class rdf:about="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#LinearRegression3">
+        <rdfs:subClassOf rdf:resource="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#MarketStrategy"/>
+    </Class>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#LinearRegression4 -->
+
+    <Class rdf:about="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#LinearRegression4">
+        <rdfs:subClassOf rdf:resource="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#MarketStrategy"/>
+    </Class>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#MarketPriceFollowing -->
+
+    <Class rdf:about="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#MarketPriceFollowing">
+        <rdfs:subClassOf rdf:resource="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#MarketStrategy"/>
+    </Class>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#MarketStrategy -->
+
+    <Class rdf:about="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#MarketStrategy">
+        <rdfs:subClassOf rdf:resource="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#Strategy"/>
+        <rdfs:comment xml:lang="en">This class represents an abstract MarketStrategy. A MarketStrategy is a Strategy intended to help players with price forecasting for a given market&apos;s session taking into account the desired amount of power that the player wants to negotiate in each period.</rdfs:comment>
+    </Class>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#OptimisticAnalysis -->
+
+    <Class rdf:about="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#OptimisticAnalysis">
+        <rdfs:subClassOf rdf:resource="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#ScenarioAnalysisMethod"/>
+    </Class>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#PortfolioOptimization -->
+
+    <Class rdf:about="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#PortfolioOptimization">
+        <rdfs:subClassOf rdf:resource="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#Tool"/>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#hasStrategy"/>
+                <someValuesFrom rdf:resource="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#PortfolioStrategy"/>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#requiresTool"/>
+                <qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</qualifiedCardinality>
+                <onClass rdf:resource="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#ALBidS"/>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">This class represents an abstract PortfolioOptimization. The PortfolioOptimization tool contains Portfolio Strategies that helps the players participating in day-ahead market type. The difference between this tool and ALBidS is that the player only need to specify how much power he want to negotiate in the whole market session. The amount of power per period will be automatically defined in the most profitable way.</rdfs:comment>
+    </Class>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#PortfolioStrategy -->
+
+    <Class rdf:about="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#PortfolioStrategy">
+        <rdfs:subClassOf rdf:resource="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#Strategy"/>
+        <rdfs:comment xml:lang="en">This class represents an abstract PortfolioStrategy. A PortfolioStrategy is a type of strategy with a similar purpose of MarketStrategy. The difference is that PortfolioStrategy only needs to know how much energy the player wants to negotiate. This strategies will divide the total amount of power by each period in the most profitable way.</rdfs:comment>
+    </Class>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#QPSO -->
+
+    <Class rdf:about="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#QPSO">
+        <rdfs:subClassOf rdf:resource="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#PortfolioStrategy"/>
+    </Class>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#RLAStrategy -->
+
+    <Class rdf:about="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#RLAStrategy">
+        <rdfs:subClassOf rdf:resource="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#Strategy"/>
+        <rdfs:comment xml:lang="en">This class represents an abstract RLAStrategy. This type of strategy helps the players by automatically choosing the best strategies for each player&apos;s context. This way the player won&apos;t have to specify what strategies he wants to use.</rdfs:comment>
+    </Class>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#Request -->
+
+    <Class rdf:about="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#Request">
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#message"/>
+                <qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</qualifiedCardinality>
+                <onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">This class represents a Request that contains a text message with the specification of the Request. The Request is the way of the players to seek for decision support.</rdfs:comment>
+    </Class>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#RothErev -->
+
+    <Class rdf:about="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#RothErev">
+        <rdfs:subClassOf rdf:resource="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#RLAStrategy"/>
+    </Class>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#SA-QL -->
+
+    <Class rdf:about="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#SA-QL">
+        <rdfs:subClassOf rdf:resource="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#MarketStrategy"/>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#admissibleError"/>
+                <qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</qualifiedCardinality>
+                <onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#bidInterval"/>
+                <qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</qualifiedCardinality>
+                <onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#unsignedInt"/>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#bidsNumber"/>
+                <qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</qualifiedCardinality>
+                <onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#unsignedInt"/>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#learningRate"/>
+                <qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</qualifiedCardinality>
+                <onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#temperature"/>
+                <qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</qualifiedCardinality>
+                <onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+            </Restriction>
+        </rdfs:subClassOf>
+    </Class>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#STHMetalearner -->
+
+    <Class rdf:about="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#STHMetalearner">
+        <rdfs:subClassOf rdf:resource="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#MarketStrategy"/>
+    </Class>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#SVM -->
+
+    <Class rdf:about="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#SVM">
+        <rdfs:subClassOf rdf:resource="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#MarketStrategy"/>
+        <rdfs:subClassOf>
+            <Class>
+                <unionOf rdf:parseType="Collection">
+                    <Restriction>
+                        <onProperty rdf:resource="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#kernelFunction"/>
+                        <hasValue>RBF</hasValue>
+                    </Restriction>
+                    <Restriction>
+                        <onProperty rdf:resource="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#kernelFunction"/>
+                        <hasValue>eRBF</hasValue>
+                    </Restriction>
+                </unionOf>
+            </Class>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#angle"/>
+                <qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</qualifiedCardinality>
+                <onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#eInsensitive"/>
+                <qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</qualifiedCardinality>
+                <onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#unsignedInt"/>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#limit"/>
+                <qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</qualifiedCardinality>
+                <onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#offset"/>
+                <qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</qualifiedCardinality>
+                <onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+            </Restriction>
+        </rdfs:subClassOf>
+    </Class>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#ScenarioAnalysisMethod -->
+
+    <Class rdf:about="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#ScenarioAnalysisMethod">
+        <equivalentClass>
+            <Class>
+                <unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#LearningMethod"/>
+                    <rdf:Description rdf:about="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#OptimisticAnalysis"/>
+                    <rdf:Description rdf:about="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#ScenariosAverage"/>
+                </unionOf>
+            </Class>
+        </equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#ValuePartition"/>
+        <rdfs:comment xml:lang="en">This class represents ScenarioAnalysisMethod, a value partition that describes only values from ScenariosAverage, OptimisticAnalysis or LearningMethod.</rdfs:comment>
+    </Class>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#ScenariosAverage -->
+
+    <Class rdf:about="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#ScenariosAverage">
+        <rdfs:subClassOf rdf:resource="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#ScenarioAnalysisMethod"/>
+    </Class>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#SimpleMetalearner -->
+
+    <Class rdf:about="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#SimpleMetalearner">
+        <rdfs:subClassOf rdf:resource="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#MarketStrategy"/>
+    </Class>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#SimpleRLA -->
+
+    <Class rdf:about="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#SimpleRLA">
+        <rdfs:subClassOf rdf:resource="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#RLAStrategy"/>
+    </Class>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#SimulatedAnnealing -->
+
+    <Class rdf:about="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#SimulatedAnnealing">
+        <rdfs:subClassOf rdf:resource="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#PortfolioStrategy"/>
+    </Class>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#StandardPSO -->
+
+    <Class rdf:about="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#StandardPSO">
+        <rdfs:subClassOf rdf:resource="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#PortfolioStrategy"/>
+    </Class>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#Strategy -->
+
+    <Class rdf:about="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#Strategy">
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#weight"/>
+                <qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</qualifiedCardinality>
+                <onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">This class represents an abstract Strategy, defining its weight. A Strategy aims to help the player, that requests decision support, by indicating what behaviour he should adopt in the desired market&apos;s session. The strategies can require one or more parameters that has to be defined in order to use the strategy. Some parameters are defined by the player and others are automatically managed by the system. All strategies have one parameter in common: weight (Importance of the strategy to the system).</rdfs:comment>
+    </Class>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#TabuSearch -->
+
+    <Class rdf:about="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#TabuSearch">
+        <rdfs:subClassOf rdf:resource="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#PortfolioStrategy"/>
+    </Class>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#Tool -->
+
+    <Class rdf:about="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#Tool">
+        <rdfs:comment xml:lang="en">This class represents an abstract Tool. Each tool is a set of strategies designed to give decision support in a certain market type.</rdfs:comment>
+    </Class>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#ValuePartition -->
+
+    <Class rdf:about="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#ValuePartition">
+        <rdfs:comment xml:lang="en">The class ValuePartition is a pattern that allows the specification and restrition of certain values that a property can be associated.</rdfs:comment>
+    </Class>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#WeightedMetalearner -->
+
+    <Class rdf:about="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#WeightedMetalearner">
+        <rdfs:subClassOf rdf:resource="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#MarketStrategy"/>
+    </Class>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/electricity-markets.owl#Player -->
+
+    <rdf:Description rdf:about="http://www.mascem.gecad.isep.ipp.pt/ontologies/electricity-markets.owl#Player">
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#hasRequest"/>
+                <someValuesFrom rdf:resource="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#Request"/>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#participateInSession"/>
+                <someValuesFrom rdf:resource="http://www.mascem.gecad.isep.ipp.pt/ontologies/electricity-markets.owl#Session"/>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#useStrategy"/>
+                <someValuesFrom rdf:resource="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#MarketStrategy"/>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#useStrategy"/>
+                <someValuesFrom rdf:resource="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#PortfolioStrategy"/>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#useTool"/>
+                <someValuesFrom rdf:resource="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#Tool"/>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#useStrategy"/>
+                <qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</qualifiedCardinality>
+                <onClass rdf:resource="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#RLAStrategy"/>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#totalAmountToNegotiate"/>
+                <qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</qualifiedCardinality>
+                <onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+            </Restriction>
+        </rdfs:subClassOf>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/electricity-markets.owl#Session -->
+
+    <rdf:Description rdf:about="http://www.mascem.gecad.isep.ipp.pt/ontologies/electricity-markets.owl#Session">
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#useStrategy"/>
+                <someValuesFrom rdf:resource="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#MarketStrategy"/>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#useStrategy"/>
+                <someValuesFrom rdf:resource="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#RLAStrategy"/>
+            </Restriction>
+        </rdfs:subClassOf>
+    </rdf:Description>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#LearningMethod -->
+
+    <NamedIndividual rdf:about="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#LearningMethod">
+        <rdf:type rdf:resource="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#ScenarioAnalysisMethod"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#OptimisticAnalysis -->
+
+    <NamedIndividual rdf:about="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#OptimisticAnalysis">
+        <rdf:type rdf:resource="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#ScenarioAnalysisMethod"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#ScenariosAverage -->
+
+    <NamedIndividual rdf:about="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#ScenariosAverage">
+        <rdf:type rdf:resource="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#ScenarioAnalysisMethod"/>
+    </NamedIndividual>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // General axioms
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#Request"/>
+            <rdf:Description rdf:about="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#Strategy"/>
+            <rdf:Description rdf:about="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#Tool"/>
+            <rdf:Description rdf:about="http://www.mascem.gecad.isep.ipp.pt/ontologies/aid-em.owl#ValuePartition"/>
+            <rdf:Description rdf:about="http://www.mascem.gecad.isep.ipp.pt/ontologies/electricity-markets.owl#Area"/>
+            <rdf:Description rdf:about="http://www.mascem.gecad.isep.ipp.pt/ontologies/electricity-markets.owl#Bid"/>
+            <rdf:Description rdf:about="http://www.mascem.gecad.isep.ipp.pt/ontologies/electricity-markets.owl#BilateralContract"/>
+            <rdf:Description rdf:about="http://www.mascem.gecad.isep.ipp.pt/ontologies/electricity-markets.owl#Market"/>
+            <rdf:Description rdf:about="http://www.mascem.gecad.isep.ipp.pt/ontologies/electricity-markets.owl#MarketType"/>
+            <rdf:Description rdf:about="http://www.mascem.gecad.isep.ipp.pt/ontologies/electricity-markets.owl#Offer"/>
+            <rdf:Description rdf:about="http://www.mascem.gecad.isep.ipp.pt/ontologies/electricity-markets.owl#Operator"/>
+            <rdf:Description rdf:about="http://www.mascem.gecad.isep.ipp.pt/ontologies/electricity-markets.owl#Period"/>
+            <rdf:Description rdf:about="http://www.mascem.gecad.isep.ipp.pt/ontologies/electricity-markets.owl#Player"/>
+            <rdf:Description rdf:about="http://www.mascem.gecad.isep.ipp.pt/ontologies/electricity-markets.owl#Power"/>
+            <rdf:Description rdf:about="http://www.mascem.gecad.isep.ipp.pt/ontologies/electricity-markets.owl#Price"/>
+            <rdf:Description rdf:about="http://www.mascem.gecad.isep.ipp.pt/ontologies/electricity-markets.owl#Session"/>
+        </members>
+    </rdf:Description>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi -->
+
